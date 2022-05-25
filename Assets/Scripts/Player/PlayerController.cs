@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider                          _crounchCollider;
 
     [Header("Ground Detect")]
-    [SerializeField] private Collider                                 _groundDetector;
     [SerializeField] private bool                                     _isGrounded;
 
     // Start is called before the first frame update
@@ -90,11 +89,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        _isGrounded = true;
         if (other.CompareTag("Wood"))
         {
             _onWood = true;
             _rb.useGravity = false;
+            _isGrounded = false;
         }
+
+        
     }
 
 
@@ -105,6 +108,7 @@ public class PlayerController : MonoBehaviour
             _onWood = false;
             _rb.useGravity = true;
         }
+        _isGrounded = false;
     }
     public void InitializeComponents()
     {
@@ -114,15 +118,18 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
-        //controlamos si corre o camina
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _movementSpeed = _runSpeed;
-        }
-        else
-        {
-            _movementSpeed = _speed;
-        }
+        
+            //controlamos si corre o camina
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _movementSpeed = _runSpeed;
+            }
+            else
+            {
+                _movementSpeed = _speed;
+            }
+        
+        
 
         //cargamos la direccion en la que se mueve el jugador
         _horizontal = Input.GetAxisRaw("Horizontal");
