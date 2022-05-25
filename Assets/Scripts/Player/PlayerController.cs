@@ -116,6 +116,10 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>(); //Como esto estaría solo en el modelo, accedemos a él mediante el hijo
     }
 
+    public void Defeat()
+    {
+        //EventManager.GameOverEvent +=
+    }
     public void Movement()
     {
         
@@ -139,11 +143,11 @@ public class PlayerController : MonoBehaviour
         {
             if (!_onWood)
             {
-                _currentMovementDir = new Vector3(0, 0, _horizontal);
+                _currentMovementDir = new Vector3(0, 0, _horizontal */*el movementspeed fue agregado luego de cambiar a velocity*/ _movementSpeed);
             }
             else
             {
-                _currentMovementDir = new Vector3(0, _vertical, _horizontal);
+                _currentMovementDir = new Vector3(0, _vertical, _horizontal */*el movementspeed fue agregado luego de cambiar a velocity*/ _movementSpeed);
             }
 
         }
@@ -152,17 +156,22 @@ public class PlayerController : MonoBehaviour
 
             if (!_onWood)
             {
-                _currentMovementDir = new Vector3(-_horizontal, _vertical, 0);
+                _currentMovementDir = new Vector3(-_horizontal * /*el movementspeed fue agregado luego de cambiar a velocity*/_movementSpeed, _vertical, 0);
             }
             else
             {
-                _currentMovementDir = new Vector3(-_horizontal, _vertical, 0);
+                _currentMovementDir = new Vector3(-_horizontal * /*el movementspeed fue agregado luego de cambiar a velocity*/_movementSpeed, _vertical, 0);
             }
 
         }
+        
+        //-----------------------------------------movimiento------------------------------------------//
+        //transform.Translate(_currentMovementDir * _movementSpeed * Time.deltaTime); 
 
-        transform.Translate(_currentMovementDir * _movementSpeed * Time.deltaTime);
+        _rb.velocity = _currentMovementDir;
 
+
+        //------------------------------------------rotacion------------------------------------------//
         if (_currentMovementDir != Vector3.zero)
         {
             _model.forward = Vector3.Slerp(_model.forward, _currentMovementDir, Time.deltaTime * _rotationSpeed); //rotación del modelo
