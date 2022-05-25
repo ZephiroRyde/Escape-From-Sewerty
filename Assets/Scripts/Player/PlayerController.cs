@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private float                                                    _movementSpeed;
     private Vector3                                                  _currentMovementDir;
-    
+
+    [SerializeField] private float                                   _gravity;
+
     private bool                                                     _isCrounch;
     private bool                                                     _onWood = false;
     private bool                                                     _normalDir = true;
@@ -80,6 +82,10 @@ public class PlayerController : MonoBehaviour
         {
             _lastPlaceGround = transform.position;
         }
+        else 
+        {
+            _rb.velocity += new Vector3(0, -_gravity, 0);
+        }
 
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -120,6 +126,8 @@ public class PlayerController : MonoBehaviour
     {
         //EventManager.GameOverEvent +=
     }
+
+    
     public void Movement()
     {
         
