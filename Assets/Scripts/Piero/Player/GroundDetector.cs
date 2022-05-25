@@ -1,3 +1,8 @@
+
+
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +21,7 @@ public class GroundDetector : MonoBehaviour
     {
         if(other.CompareTag("Ground"))
         {
-            GameManager.GetInstance.GetPlayerController.isGrounded = true;
+            //GameManager.GetInstance.GetPlayerController.isGrounded = true;
             Debug.Log("Toco Suelo");
         }
     }
@@ -25,7 +30,7 @@ public class GroundDetector : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            GameManager.GetInstance.GetPlayerController.isGrounded = false;
+            //GameManager.GetInstance.GetPlayerController.isGrounded = false;
             Debug.Log("salio Suelo");
         }
     }
