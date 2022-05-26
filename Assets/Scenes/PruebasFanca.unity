@@ -635,7 +635,6 @@ MonoBehaviour:
   _playerController: {fileID: 2051516233}
   _camera: {fileID: 330585545}
   _uiManager: {fileID: 155458676}
-  _audioManager: {fileID: 0}
 --- !u!1 &155458674
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoText: {fileID: 1802426819}
   infoTextPanel: {fileID: 247897635}
-  gameOverPanel: {fileID: 0}
-  VictoryPanel: {fileID: 0}
 --- !u!1 &157100151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1965,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22262639920f43d6be32430e4e58350d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2191,7 +2188,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2528148, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2875,7 +2872,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &677758653
 BoxCollider:
@@ -3369,7 +3366,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &827696837
 BoxCollider:
@@ -4332,7 +4329,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1049600308
 BoxCollider:
@@ -4897,7 +4894,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1170638732
 BoxCollider:
@@ -5285,7 +5282,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1220195510
 BoxCollider:
@@ -5676,7 +5673,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22262639920f43d6be32430e4e58350d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6179,7 +6176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22262639920f43d6be32430e4e58350d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6446,7 +6443,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1491944948
 BoxCollider:
@@ -7020,6 +7017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2403ef654ae694581b3af3703797d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aS: {fileID: 1188940679}
+  musicAS: {fileID: 2125981583}
+  panelVictoria: {fileID: 784267240}
 --- !u!33 &1651265335
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7656,7 +7656,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1859070958
 BoxCollider:
@@ -7792,7 +7792,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _otherTag: Player
+  otherTag: Player
   activado: 0
 --- !u!65 &1869255998
 BoxCollider:
@@ -7971,7 +7971,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22262639920f43d6be32430e4e58350d, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8429,6 +8429,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba5c1d5adffd704ebd7cced4ea7a9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Notas: "Hice algunos cambios en la c\xE1mara tambi\xE9n. Fijate el c\xF3digo y
+    vas a notar los cambios que hice comentados al lado -Emanuel."
+  ptransform: {x: 0, y: 0, z: 0}
+  _horizontal: 0
+  _vertical: 0
+  _speed: 5
+  _runSpeed: 8
+  _movementSpeed: 0
+  _currentMovementDir: {x: 0, y: 0, z: 0}
+  _jumpForce: 6
+  isGrounded: 0
+  _interacting: 0
+  _model: {fileID: 404616706}
+  _rotationSpeed: 15
+  _defaultCollider: {fileID: 0}
+  _crounchCollider: {fileID: 0}
 --- !u!1 &2052937613
 GameObject:
   m_ObjectHideFlags: 0
