@@ -13,9 +13,17 @@ public class EventManager : MonoBehaviour
        _uiManager    = GameManager.GetInstance.GetUIManager;
     }
     public static event UnityAction GameOverEvent;
+    public static event UnityAction GoalEvent;
     public void OnGameOver()
     {
         _audioManager.PlayGameOverAudio();
         
+    }
+
+    public void OnGoal()
+    {
+        _audioManager.StopLevelMusic();
+        _audioManager.PlayGoalAudio();
+        _uiManager.LoadVictoryPanel();
     }
 }

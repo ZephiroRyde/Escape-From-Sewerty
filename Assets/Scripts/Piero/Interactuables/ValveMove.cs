@@ -12,7 +12,7 @@ public class ValveMove : MonoBehaviour
     [SerializeField] private MeshRenderer _selfMesh;
     [SerializeField] private float _detectDistance;
 
-    private void Update()
+    /*private void Update()
     {
         
 
@@ -41,7 +41,7 @@ public class ValveMove : MonoBehaviour
         {
             _selfMesh.material = _materials[0];
         }
-    }
+    }*/
 
     private void OnDrawGizmosSelected()
     {

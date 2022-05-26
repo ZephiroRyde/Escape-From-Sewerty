@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
     [Header("Texto Info")]
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private Image infoTextPanel;
-   
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject VictoryPanel;
 
 
     public void LoadText(string actualtext)
@@ -25,5 +26,10 @@ public class UIManager : MonoBehaviour
     public void OpenText()
     {
         infoTextPanel.gameObject.SetActive(true);
+    }
+
+    public void LoadVictoryPanel()
+    {
+        VictoryPanel.SetActive(true);
     }
 }

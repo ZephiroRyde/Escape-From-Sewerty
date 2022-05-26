@@ -50,5 +50,16 @@ public class Enemy01 : MonoBehaviour
         {
             GameManager.GetInstance.ResetScene();
         }
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }

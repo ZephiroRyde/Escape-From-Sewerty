@@ -15,7 +15,7 @@ public class ValveRotation : MonoBehaviour
 
     [SerializeField] private bool isRot = false;
 
-    private void Update()
+    /*private void Update()
     {
         if (GameManager.GetInstance.GetPlayerController._interacting)
         {
@@ -54,7 +54,7 @@ public class ValveRotation : MonoBehaviour
         {
             _selfMesh.material = _materials[0];
         }
-    }
+    }*/
 
     public void RotatePlatform(bool rotateLeft = true)
     {

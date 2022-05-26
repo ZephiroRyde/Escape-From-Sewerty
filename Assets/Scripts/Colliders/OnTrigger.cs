@@ -1,19 +1,34 @@
 using UnityEngine;
 using UnityEngine.Events;
-
+using System.Collections.Generic;
 public class OnTrigger : MonoBehaviour
 {
     public UnityEvent onTriggerEnter;
     public UnityEvent onTriggerExit;
 
-    [SerializeField] private string otherTag = "Player";
+    //[SerializeField] private List<string> otherTag = new List<string>();
 
+    [SerializeField] private string _otherTag;
+
+    /// <summary>
+    /// 0 - Player
+    /// 1 - Ground
+    /// 2 - Enemy
+    /// 3 - Wood
+    /// </summary>
+    
+   
     public bool activado;
+
+    private void Start()
+    {
+        
+    }
     void OnTriggerEnter(Collider other)
     {
         if (!activado) return;
 
-        if (other.gameObject.CompareTag(otherTag))
+        if (other.gameObject.CompareTag(_otherTag))
         {
             onTriggerEnter?.Invoke();
         }
@@ -23,7 +38,7 @@ public class OnTrigger : MonoBehaviour
     {
         if (!activado) return;
 
-        if (other.gameObject.CompareTag(otherTag))
+        if (other.gameObject.CompareTag(_otherTag))
         {
             onTriggerExit?.Invoke();
         }
@@ -31,10 +46,9 @@ public class OnTrigger : MonoBehaviour
 
 
 
-    public static void Goal()
+    public void Goal()
     {
-        //aS.Play();                     AUDIO MANAGER
-        //musicAS.Stop();                AUDIO MANAGER
-        //panelVictoria.SetActive(true); UI MANAGER
+        //EventManager.GoalEvent; llamamos al evento dentro del event manager
+        
     }
 }

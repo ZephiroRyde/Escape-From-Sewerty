@@ -14,10 +14,19 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip[] _levelMusicAC;
     [SerializeField] private AudioClip   _gameOverAC;
-
+    [SerializeField] private AudioClip _onGoalAC;
     public void PlayGameOverAudio()
     {
         _musicAS.clip = _gameOverAC;
         _musicAS.Play();
+    }
+    public void PlayGoalAudio()
+    {
+        _musicAS.clip = _onGoalAC;
+        _musicAS.Play();
+    }
+    public void StopLevelMusic()
+    {
+        _musicAS.Pause();
     }
 }

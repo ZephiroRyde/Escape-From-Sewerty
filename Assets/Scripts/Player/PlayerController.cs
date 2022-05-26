@@ -7,18 +7,17 @@ public class PlayerController : MonoBehaviour
     [TextArea(1, 8)]
     [SerializeField] private string Notas;
 
-
+    private float _horizontal;
+    private float _vertical;
     //datos publicos generales
     public Vector3                                                   ptransform;
 
     [Header("Movimiento")]
 
-    private float                                                    _horizontal;
-    private float                                                    _vertical;
 
-    [SerializeField] private float                                   _speed = 5;
-    [SerializeField] private float                                   _runSpeed = 8;
-    [SerializeField] private float                                   _jumpForce = 6;
+    [SerializeField] private float                                   _speed = 5;   //
+    [SerializeField] private float                                   _runSpeed = 8; //
+    [SerializeField] private float                                   _jumpForce = 6; //
 
     private float                                                    _movementSpeed;
     private Vector3                                                  _currentMovementDir;
@@ -92,7 +91,7 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         _isGrounded = true;
@@ -115,7 +114,7 @@ public class PlayerController : MonoBehaviour
             _rb.useGravity = true;
         }
         _isGrounded = false;
-    }
+    }*/
     public void InitializeComponents()
     {
         _rb = GetComponent<Rigidbody>();

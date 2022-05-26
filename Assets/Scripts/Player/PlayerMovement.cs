@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    
     [Header("Movement")]
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _runSpeed = 8;
     private float _movementSpeed = 5;
+
+    private float _horizontal;
+    private float _vertical;
+    private bool _normalDir = true;
+
+    [SerializeField] private Transform _model;
+    [SerializeField] private float _rotationSpeed = 15;
+
+    [Header("Escalar")]
+    private bool _onWood;
+
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 3;
 
@@ -18,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _movement;
     private bool _isGrounded = false;
 
+    [Header("Interact")]
+    private bool _interacting = false;
+
+    [Header("Limits")]
+    private Vector3 _lastPlaceGround;
     private void Awake() 
     {
         _charController = GetComponent<CharacterController>();    
@@ -25,13 +41,51 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
+
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical   = Input.GetAxis("Vertical");
+
         _isGrounded = _charController.isGrounded;
 
-        Movement();
-        HandleGravity();
+        if(_isGrounded)
+        {
+            _lastPlaceGround = transform.position;
+        }
+
+        Movement();        
         HandleJump();
+
+        HandleGravity();
+    }
+    //----------------------------------------------------------------------------------------//
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _isGrounded = true;
+        if (other.CompareTag("Wood"))
+        {
+            _onWood = true;
+            _isGrounded = false;
+        }
+
+
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wood"))
+        {
+            _onWood = false;
+        }
+        _isGrounded = false;
+    }
+
+    //----------------------------------------------------------------------------------------//
+
+    public void HandleCrouch()
+    {
+
+    }
     private void HandleJump()
     {
         if (!_isGrounded) return;
@@ -49,12 +103,42 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        _movement.z = Input.GetAxis("Horizontal") * _movementSpeed;
+
+
+
+        //controlamos si corre o camina
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _movementSpeed = _runSpeed;
+        }
+        else
+        {
+            _movementSpeed = _speed;
+        }
+
+        if(_normalDir)
+        {
+            _movement.z = _horizontal * _movementSpeed; //mover
+            _movement.x = 0;
+        }
+        else
+        {
+            _movement.x = -_horizontal * _movementSpeed;
+            _movement.z = 0;
+        }
+
+        _model.forward = Vector3.Slerp(_model.forward, _charController.velocity, Time.deltaTime * _rotationSpeed); //rotación del modelo
+
+
     }
     private void HandleGravity()
     {
-        _movement.y += GetGravity() * Time.deltaTime;
-        _charController.Move(_movement * Time.deltaTime);
+        if(!_onWood) //si toca madera
+        {
+            _movement.y += GetGravity() * Time.deltaTime;
+            _charController.Move(_movement * Time.deltaTime);
+        }
+        
     }
 
     private float GetGravity()
@@ -65,5 +149,24 @@ public class PlayerMovement : MonoBehaviour
             value = _fallGravityValue;
 
         return value;
+    }
+
+    public void ChangeDirection()
+    {
+        _normalDir = !_normalDir;
+
+    }
+    public void MoveToLPG()
+    {
+        transform.position = _lastPlaceGround + new Vector3(0, 1, 0);
+    }
+
+    public void MoveTo(Vector3 newPosition)
+    {
+        transform.position = new Vector3(newPosition.x, transform.position.y, newPosition.z);
+    }
+    public void Interact()
+    {
+        _interacting = !_interacting;
     }
 }

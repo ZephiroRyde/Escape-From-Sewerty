@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     [Header("Components")]
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private PlayerMovement _playerController;
     [SerializeField] private Camera _camera;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private AudioManager _audioManager;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         get { return _instance; }
     }
-    public PlayerController GetPlayerController
+    public PlayerMovement GetPlayerController
     {
         get { return _playerController; }
     }
