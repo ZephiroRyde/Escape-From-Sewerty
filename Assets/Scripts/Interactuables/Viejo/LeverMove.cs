@@ -9,34 +9,21 @@ public class LeverMove : MonoBehaviour
     public bool LeverActivation = false;
     private bool _leverCancel = false;
     [SerializeField] float _cooldown;
-    [SerializeField] bool _leftLever = true;
+    [SerializeField] bool _isLeverLeft = true;
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && _leverCancel == false)
+        if (other.gameObject.tag == "Player")
         {
-            LeverActivation = true;
-        }
-        else if (other.gameObject.tag == "Player" && _leverCancel == true)
-        {
-            LeverActivation = false;
+            LeverActivation = !_leverCancel;
         }
     }
     private void Update()
     {
         if (LeverActivation == true && Input.GetKeyDown(KeyCode.E))
         {
-            if (_leftLever == true)
-            {
-                DisplayLeverLeft.SetActive(false);
-                DisplayLeverRight.SetActive(true);
-                _leftLever = false;
-            }
-            else if (_leftLever == false)
-            {
-                DisplayLeverRight.SetActive(false);
-                DisplayLeverLeft.SetActive(true);
-                _leftLever = true;
-            }
+            DisplayLeverLeft.SetActive(!_isLeverLeft);
+            DisplayLeverRight.SetActive(_isLeverLeft);
+            _isLeverLeft = !_isLeverLeft;
             _leverCancel = true;
             Invoke("SetBoolTrue", _cooldown);
         }
