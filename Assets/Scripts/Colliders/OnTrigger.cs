@@ -8,7 +8,7 @@ public class OnTrigger : MonoBehaviour
 
     //[SerializeField] private List<string> otherTag = new List<string>();
 
-    [SerializeField] private string _otherTag;
+    [SerializeField] private string _otherTag = "Player";
 
     /// <summary>
     /// 0 - Player
@@ -46,9 +46,5 @@ public class OnTrigger : MonoBehaviour
 
 
 
-    public void Goal()
-    {
-        //EventManager.GoalEvent; llamamos al evento dentro del event manager
-        
-    }
+    
 }

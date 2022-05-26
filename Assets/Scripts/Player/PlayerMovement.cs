@@ -127,7 +127,9 @@ public class PlayerMovement : MonoBehaviour
             _movement.z = 0;
         }
 
-        _model.forward = Vector3.Slerp(_model.forward, _charController.velocity, Time.deltaTime * _rotationSpeed); //rotación del modelo
+        Vector3 RoteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z);
+
+        _model.forward = Vector3.Slerp(_model.forward, RoteDirection , Time.deltaTime * _rotationSpeed); //rotación del modelo
 
 
     }

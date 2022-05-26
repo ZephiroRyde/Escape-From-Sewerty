@@ -15,7 +15,8 @@ public class UIManager : MonoBehaviour
 
     public void LoadText(string actualtext)
     {
-        infoText.text = "" + actualtext;
+        print("cargar texto");
+        infoText.text = actualtext;
     }
 
     public void ExitText()

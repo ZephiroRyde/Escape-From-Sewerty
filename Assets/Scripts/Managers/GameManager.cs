@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private AudioManager _audioManager;
 
+
+    private void Start()
+    {
+        EventManager.GoalEvent += OnGoal;
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
@@ -41,8 +46,10 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-    }
 
+        EventManager.GoalEvent -= OnGoal;
+    }
+    //---------------------------------------------------------------------------------------//
     public static GameManager GetInstance
     {
         get { return _instance; }
@@ -65,9 +72,22 @@ public class GameManager : MonoBehaviour
         get { return _camera; }
     }
 
-
+    //---------------------------------------------------------------------------------------//
     public void ResetScene()
     {
         SceneManager.LoadScene("PruebasPiero");
+    }
+
+    public void OnGameOver()
+    {
+        _audioManager.PlayGameOverAudio();
+
+    }
+
+    public void OnGoal()
+    {
+        _audioManager.StopLevelMusic();
+        _audioManager.PlayGoalAudio();
+        _uiManager.LoadVictoryPanel();
     }
 }
