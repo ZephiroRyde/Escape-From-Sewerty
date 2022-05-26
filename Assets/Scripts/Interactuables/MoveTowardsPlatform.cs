@@ -5,46 +5,55 @@ using UnityEngine;
 public class MoveTowardsPlatform : MonoBehaviour
 {
     public GameObject Lever;
-    LeverMove leverMove;
-    [SerializeField] Vector3 _targetPosition;
-    [SerializeField] float _speed = 10;
-    private Vector3 _initialPosition;
-    [SerializeField] private bool _back = false;
+    [SerializeField] private Vector3 _targetPosition;
+    [SerializeField] private float _speed = 10;
+    [SerializeField] private bool _backToOrigin = false;
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private Transform _playerTransform;
+    private Vector3 _initialPosition;
+    LeverMove leverMove;
+
     private void Awake()
     {
         leverMove = Lever.GetComponent<LeverMove>();
         _initialPosition = transform.position;
     }
+
     void Update()
+    {
+        if (_isMoving == true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, (_backToOrigin == true ? _initialPosition: _targetPosition), _speed * Time.deltaTime);
+            CheckForExtremes();
+        }
+        else
+        {
+            CheckForInput();
+        }
+    }
+
+    private void CheckForInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && leverMove.LeverActivation == true)
+        {
+            _isMoving = true;
+        }
+    }
+
+    private void CheckForExtremes()
     {
         if (transform.position == _targetPosition)
         {
-            _back = true;
+            _backToOrigin = true;
             _isMoving = false;
         }
         else if (transform.position == _initialPosition)
         {
-            _back = false;
+            _backToOrigin = false;
             _isMoving = false;
         }
-        if (Input.GetKeyDown(KeyCode.E) && _isMoving == false && leverMove.LeverActivation == true)
-        {
-            _isMoving = true;
-        }
-        if (_isMoving == true && _back == false)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
-
-        }
-        else if (_isMoving == true && _back == true)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _initialPosition, _speed * Time.deltaTime);
-
-        }
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
