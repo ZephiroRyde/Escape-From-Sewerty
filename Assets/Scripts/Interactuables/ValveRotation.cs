@@ -25,7 +25,15 @@ public class ValveRotation : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.D))
             {
+<<<<<<< Updated upstream:Assets/Scripts/Interactuables/ValveRotation.cs
                 RotatePlatform(false);
+=======
+                if(platform.rotation.x <= _maxRot)
+                {
+                    Debug.Log("rota d");
+                    platform.eulerAngles += new Vector3(_rotateSpeed * Time.deltaTime , 0f, 0f);
+                }
+>>>>>>> Stashed changes:Assets/Scripts/Piero/Interactuables/ValveRotation.cs
                 
             }
             
