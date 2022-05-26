@@ -8,18 +8,20 @@ public class ValveMove : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform platform;
     [SerializeField] private Transform[] locations;
-    [SerializeField] private Material[] _materials;
-    [SerializeField] private MeshRenderer _selfMesh;
-    [SerializeField] private float _detectDistance;
+    [SerializeField] private GameObject _light;
+    [SerializeField] private bool _detectPlayer;
 
-    /*private void Update()
+    private void Update()
     {
-        
-
-        if(Vector3.Distance(transform.position,GameManager.GetInstance.GetPlayerController.ptransform) < _detectDistance)
+        if (_detectPlayer)
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                print("interact");
+                GameManager.GetInstance.GetPlayerController.Interact();
+            }
 
-            if (GameManager.GetInstance.GetPlayerController._interacting)
+            if (GameManager.GetInstance.GetPlayerController.currentState == PlayerMovement.PlayerState.Interacting)
             {
                 if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
                 {
@@ -30,21 +32,35 @@ public class ValveMove : MonoBehaviour
                     platform.position = Vector3.MoveTowards(platform.transform.position, locations[1].position, moveSpeed * Time.deltaTime);
                 }
             }
-            _selfMesh.material = _materials[1];
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                GameManager.GetInstance.GetPlayerController.Interact();
-            }
         }
-        else
-        {
-            _selfMesh.material = _materials[0];
-        }
-    }*/
+        
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(transform.position,_detectDistance);
+
+
+
+
     }
+        
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            _light.SetActive(true);
+            _detectPlayer = true;
+            
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _detectPlayer = false;
+            _light.SetActive(false);
+        }
+    }
+
 }

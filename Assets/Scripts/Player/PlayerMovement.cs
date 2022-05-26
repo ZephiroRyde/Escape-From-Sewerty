@@ -2,7 +2,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
+    public enum PlayerState
+    {
+        Idle,
+        Walking,
+        Runing,
+        Jumping,
+        Interacting,
+        Crouching,
+        climbing
+    }
+
+    [Header("State")]
+    public PlayerState currentState = PlayerState.Idle;
+
     [Header("Movement")]
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _runSpeed = 8;
@@ -15,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _model;
     [SerializeField] private float _rotationSpeed = 15;
 
-    [Header("Escalar")]
-    private bool _onWood;
 
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 3;
@@ -52,8 +63,16 @@ public class PlayerMovement : MonoBehaviour
             _lastPlaceGround = transform.position;
         }
 
-        Movement();        
-        HandleJump();
+        if(currentState != PlayerState.Interacting)
+        {
+            Movement();
+            HandleJump();
+        }
+        
+        if(_horizontal == 0 && _vertical == 0 && currentState != PlayerState.Interacting && currentState != PlayerState.climbing)
+        {
+            currentState = PlayerState.Idle;
+        }
 
         HandleGravity();
     }
@@ -64,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = true;
         if (other.CompareTag("Wood"))
         {
-            _onWood = true;
+            currentState = PlayerState.climbing;
             _isGrounded = false;
         }
 
@@ -75,13 +94,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Wood"))
         {
-            _onWood = false;
+            currentState = PlayerState.Idle;
         }
         _isGrounded = false;
     }
 
     //----------------------------------------------------------------------------------------//
 
+    public void HandleInteract()
+    {
+
+    }
     public void HandleCrouch()
     {
 
@@ -103,16 +126,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-
+        if(currentState == PlayerState.climbing)
+        {
+            _movement.y = _vertical * _movementSpeed;
+        }
 
 
         //controlamos si corre o camina
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            if(currentState != PlayerState.climbing)
+            {
+                currentState = PlayerState.Runing;
+            }
+            
             _movementSpeed = _runSpeed;
         }
         else
         {
+            if (currentState != PlayerState.climbing)
+            {
+                currentState = PlayerState.Walking;
+            }
             _movementSpeed = _speed;
         }
 
@@ -135,14 +170,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HandleGravity()
     {
-        if(!_onWood) //si toca madera
+        if(currentState != PlayerState.climbing) //si no toca madera
         {
             _movement.y += GetGravity() * Time.deltaTime;
-            _charController.Move(_movement * Time.deltaTime);
+            
         }
-        
-    }
+        _charController.Move(_movement * Time.deltaTime); //movimiento
 
+    }
     private float GetGravity()
     {
         float value = _gravityValue;
@@ -169,6 +204,15 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Interact()
     {
-        _interacting = !_interacting;
+        if(currentState == PlayerState.Interacting)
+        {
+            currentState = PlayerState.Idle;
+        }
+        else
+        {
+            currentState = PlayerState.Interacting;
+            _movement = Vector3.zero;
+        }
+        
     }
 }
