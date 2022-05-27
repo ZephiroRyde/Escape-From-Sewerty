@@ -28,6 +28,7 @@ public class LeverRotate : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E) && !_isRot)
             {
                 RotatePlatform();
+                EventManager.OnActivateMechanism();
             }
         }
         else

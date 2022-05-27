@@ -1,19 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy01 : MonoBehaviour
 {
-    [SerializeField] private Transform[] _target;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float _targetDistance;
-    private int _actualTarget;
+    public enum EnemyState
+    {
+        Walking,
+        Death
+    }
+
+
+    [SerializeField] private EnemyState _currentState;
+    [SerializeField] private float _rotationSpeed = 15;
+    [SerializeField] private float _moveSpeed = 5;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private bool xAxis = true;
     public bool isGrounded = true;
     // Update is called once per frame
 
     private void Start()
     {
-        _actualTarget = 1;
+        _rb = this.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -21,27 +30,26 @@ public class Enemy01 : MonoBehaviour
 
         if(isGrounded)
         {
-            transform.position = Vector3.MoveTowards(transform.transform.position, _target[_actualTarget].position, moveSpeed * Time.deltaTime);
+            if(xAxis)
+            {
+                _rb.AddForce(new Vector3(_moveSpeed, 0, 0));
+            }
+            else
+            {
+                _rb.AddForce(new Vector3(0, 0, _moveSpeed));
+            }
+            
         }
-        
 
-        if(_targetDistance > Vector3.Distance(transform.position,_target[_actualTarget].position))
+        if(_currentState == EnemyState.Death)
         {
-            if(_actualTarget == 1)
-            {
-                _actualTarget = 0;
-            }
-            else 
-            {
-                _actualTarget = 1;
-            }
+            Death();
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void Death()
     {
-        Gizmos.DrawSphere(_target[0].position, _targetDistance);
-        Gizmos.DrawSphere(_target[1].position, _targetDistance);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,6 +61,14 @@ public class Enemy01 : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        if (other.CompareTag("EnemyTargetUbi"))
+        {
+            _moveSpeed = -1 * _moveSpeed;
+        }
+        if (other.CompareTag("Spikes"))
+        {
+            _currentState = EnemyState.Death;
         }
     }
     private void OnTriggerExit(Collider other)

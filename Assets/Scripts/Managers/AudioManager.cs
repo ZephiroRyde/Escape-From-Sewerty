@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] _levelMusicAC;
     [SerializeField] private AudioClip   _gameOverAC;
     [SerializeField] private AudioClip _onGoalAC;
+    [SerializeField] private AudioClip _mechanismAC;
     public void PlayGameOverAudio()
     {
         _musicAS.clip = _gameOverAC;
@@ -28,5 +29,10 @@ public class AudioManager : MonoBehaviour
     public void StopLevelMusic()
     {
         _musicAS.Pause();
+    }
+
+    public void ActivateMechanismAudio()
+    {
+        _sFXAS.PlayOneShot(_mechanismAC);
     }
 }

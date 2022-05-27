@@ -8,6 +8,8 @@ TagManager:
   - Wood
   - Enemy
   - GroundDetector
+  - EnemyTargetUbi
+  - Spikes
   layers:
   - Default
   - TransparentFX

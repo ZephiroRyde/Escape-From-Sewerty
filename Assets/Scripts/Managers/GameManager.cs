@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EventManager.GoalEvent += OnGoal;
+        EventManager.ActivateMechanism += OnActivateMechanism;
     }
     private void Update()
     {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         EventManager.GoalEvent -= OnGoal;
+        EventManager.ActivateMechanism -= OnActivateMechanism;
     }
     //---------------------------------------------------------------------------------------//
     public static GameManager GetInstance
@@ -89,5 +91,10 @@ public class GameManager : MonoBehaviour
         _audioManager.StopLevelMusic();
         _audioManager.PlayGoalAudio();
         _uiManager.LoadVictoryPanel();
+    }
+
+    public void OnActivateMechanism()
+    {
+        _audioManager.ActivateMechanismAudio();
     }
 }

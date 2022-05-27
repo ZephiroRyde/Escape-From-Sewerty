@@ -15,7 +15,7 @@ public class ValveRotation : MonoBehaviour
     [SerializeField] private bool _rotateX = true;
     [SerializeField] private bool _rotateLeft = true;
     [SerializeField] private bool _isRot = false;
-    [SerializeField] private bool _detectPlayer;
+    [SerializeField] private bool _detectPlayer = false;
 
     [Header("Others")]
     [SerializeField] private GameObject _light;
