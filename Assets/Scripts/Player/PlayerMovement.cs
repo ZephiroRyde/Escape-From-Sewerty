@@ -101,10 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     //----------------------------------------------------------------------------------------//
 
-    public void HandleInteract()
-    {
-
-    }
+    
     public void HandleCrouch()
     {
 
@@ -172,7 +169,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(currentState != PlayerState.climbing) //si no toca madera
         {
-            _movement.y += GetGravity() * Time.deltaTime;
+            if(!_isGrounded)
+            {
+               _movement.y += GetGravity() * Time.deltaTime;
+            }
+            
             
         }
         _charController.Move(_movement * Time.deltaTime); //movimiento

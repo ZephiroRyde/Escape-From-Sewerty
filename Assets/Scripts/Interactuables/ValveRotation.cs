@@ -5,45 +5,72 @@ using DG.Tweening;
 
 public class ValveRotation : MonoBehaviour
 {
+    [Header("Platform Data")]
+    [SerializeField] private Transform _platform;
 
-    [SerializeField] private float _rotateDuration;
-    [SerializeField] private Transform platform;
-    [SerializeField] private float _maxRot, _minRot;
-    [SerializeField] private Material[] _materials;
-    [SerializeField] private MeshRenderer _selfMesh;
-    [SerializeField] private float _detectDistance;
+    [Header("Rotate Parameters")]
+    [SerializeField] private float _rotateDuration = 3;
+    [SerializeField] private float _minRot = 0;
+    [SerializeField] private float _maxRot = 90;
+    [SerializeField] private bool _rotateX = true;
+    [SerializeField] private bool _rotateLeft = true;
+    [SerializeField] private bool _isRot = false;
+    [SerializeField] private bool _detectPlayer;
 
-    [SerializeField] private bool isRot = false;
+    [Header("Others")]
+    [SerializeField] private GameObject _light;
 
-    /*private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (GameManager.GetInstance.GetPlayerController._interacting)
+        if (other.CompareTag("Player"))
+        {
+            _light.SetActive(true);
+            _detectPlayer = true;
+
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _detectPlayer = false;
+            _light.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (GameManager.GetInstance.GetPlayerController.currentState == PlayerMovement.PlayerState.Interacting && _detectPlayer)
         {
             if (Input.GetKey(KeyCode.A))
             {
-                RotatePlatform(true);
+                _rotateLeft = true;
+                RotatePlatform();
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                RotatePlatform(false);
+                _rotateLeft = false;
+                RotatePlatform();
                 
             }
             
             if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             {
-                platform.DOPause();
-                isRot = false;
+                _platform.DOPause();
+                _isRot = false;
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
-                platform.DOPlay();
-                isRot = true;
+                _platform.DOPlay();
+                _isRot = true;
             }
         }
 
-        if (Vector3.Distance(transform.position, GameManager.GetInstance.GetPlayerController.ptransform) < _detectDistance)
+        if (_detectPlayer)
         {
-            _selfMesh.material = _materials[1];
+            _light.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -52,36 +79,46 @@ public class ValveRotation : MonoBehaviour
         }
         else
         {
-            _selfMesh.material = _materials[0];
+            _light.SetActive(false);
         }
-    }*/
+    }
 
-    public void RotatePlatform(bool rotateLeft = true)
+    public void RotatePlatform()
     {
-        if (isRot) return;
+        if (_isRot) return;
 
         Vector3 rot = Vector3.zero;
 
         Debug.Log("entra a rotate");
 
-        isRot = true;
+        _isRot = true;
 
-        if(rotateLeft)
+        if (_rotateX)
         {
-            rot.x = _minRot;
+            if (_rotateLeft)
+            {
+                rot.x = _minRot;
+            }
+            else
+            {
+                rot.x = _maxRot;
+            }
         }
         else
         {
-            rot.x = _maxRot;
+            if (_rotateLeft)
+            {
+                rot.z = _minRot;
+            }
+            else
+            {
+                rot.z = _maxRot;
+            }
         }
-        
 
-        platform.DORotate(rot, _rotateDuration).OnComplete(() => { isRot = false; });
+
+        _platform.DORotate(rot, _rotateDuration).OnComplete(() => { _isRot = false; });
             
 
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(transform.position, _detectDistance);
     }
 }
