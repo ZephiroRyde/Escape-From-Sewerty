@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     //---------------------------------------------------------------------------------------//
     public void ResetScene()
     {
-        SceneManager.LoadScene("PruebasPiero");
+        SceneManager.LoadScene("PruebasPiero 1");
     }
 
     public void OnGameOver()
