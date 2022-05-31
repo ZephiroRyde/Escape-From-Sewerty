@@ -75,7 +75,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         HandleGravity();
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
+
     //----------------------------------------------------------------------------------------//
 
     private void OnTriggerEnter(Collider other)
@@ -161,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 RoteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z);
 
-        _model.forward = Vector3.Slerp(_model.forward, RoteDirection , Time.deltaTime * _rotationSpeed); //rotación del modelo
+        _model.forward = Vector3.Slerp(_model.forward, RoteDirection , Time.deltaTime * _rotationSpeed); //rotaciï¿½n del modelo
 
 
     }
