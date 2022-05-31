@@ -53,6 +53,24 @@ public class PlayerMovement : MonoBehaviour
     private void Update() 
     {
 
+        /*switch(currentState)  ------- pensar en como adaptarlo -------
+        {
+            case PlayerState.Walking:
+                break;
+            case PlayerState.Runing:
+                break;
+            case PlayerState.climbing:
+                break;
+            case PlayerState.Jumping:
+                break;
+            case PlayerState.Interacting:
+                break;
+            case PlayerState.Idle:
+                break;
+            case PlayerState.Crouching:
+                break;
+        }*/
+
         _horizontal = Input.GetAxis("Horizontal");
         _vertical   = Input.GetAxis("Vertical");
 

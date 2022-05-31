@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +8,23 @@ public class Enemy01 : MonoBehaviour
     public enum EnemyState
     {
         Walking,
+        Running,
         Falling,
         Death
 
     }
 
 
+
     [SerializeField] private EnemyState _currentState;
     [SerializeField] private float _rotationSpeed = 15;
-    [SerializeField] private float _moveSpeed = 3;
+    [SerializeField] private float _walkSpeed = 5;
+    [SerializeField] private float _runSpeed = 8;
     [SerializeField] private float _gravitySpeed;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private bool xAxis = true;
+    [SerializeField] private Transform _model;
+
     public bool isGrounded = true;
     // Update is called once per frame
 
@@ -37,6 +42,10 @@ public class Enemy01 : MonoBehaviour
                 Walking();
                 break;
 
+            case EnemyState.Running:
+                Running();
+                break;
+
             case EnemyState.Death:
                 Death();
                 break;
@@ -44,6 +53,24 @@ public class Enemy01 : MonoBehaviour
             case EnemyState.Falling:
                 Falling();
                 break;
+        }
+    }
+
+    private void Running()
+    {
+        if (xAxis)
+        {
+            _rb.velocity = new Vector3(0, 0, _walkSpeed);
+        }
+        else
+        {
+            _rb.velocity = new Vector3(_walkSpeed, 0, 0);
+        }
+
+
+        if (!isGrounded)
+        {
+            _currentState = EnemyState.Falling;
         }
     }
 
@@ -57,18 +84,37 @@ public class Enemy01 : MonoBehaviour
         
         if (other.CompareTag("EnemyTargetUbi"))
         {
-            _moveSpeed = -1 * _moveSpeed;
+            _walkSpeed = -1 * _walkSpeed;
+            _runSpeed = -1 * _runSpeed;
         }
 
         if (other.CompareTag("Ground"))
         {
             isGrounded = true;
         }
+        if (other.CompareTag("Spikes"))
+        {
+            _currentState = EnemyState.Death;
+        }
+        if (other.CompareTag("Player"))
+        {
+            GameManager.GetInstance.ResetScene();
+        }
 
     }
     private void Walking()
     {
-        _rb.velocity = new Vector3(0,0, _moveSpeed);
+
+
+        if(xAxis)
+        {
+            _rb.velocity = new Vector3(0, 0, _walkSpeed);
+        }
+        else
+        {
+            _rb.velocity = new Vector3(_walkSpeed, 0, 0);
+        }
+        
 
         if (!isGrounded) 
         {

@@ -626,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69010770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 18}
+  m_LocalPosition: {x: 0, y: -1, z: 21.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3343,8 +3343,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.050395805, y: -0.5295034, z: -0.03153398, w: 0.8462222}
-  m_LocalPosition: {x: 10.006248, y: 16.960056, z: 18.734879}
+  m_LocalRotation: {x: 0.066044055, y: -0.6758656, z: 0.061019443, w: 0.73151934}
+  m_LocalPosition: {x: 10.451943, y: 5.968744, z: -7.547921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5264,8 +5264,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559528904}
-  m_LocalRotation: {x: -0.050395805, y: -0.5295034, z: -0.03153398, w: 0.8462222}
-  m_LocalPosition: {x: 10.006248, y: 10.960056, z: 16.734879}
+  m_LocalRotation: {x: 0.066044055, y: -0.6758656, z: 0.061019443, w: 0.73151934}
+  m_LocalPosition: {x: 10.451943, y: -0.0312562, z: -9.547921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8529,7 +8529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 84830769}
-  m_PathPosition: 208.90665
+  m_PathPosition: 4.654261
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -13529,7 +13529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463502783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.29, z: 23.6}
+  m_LocalPosition: {x: 0, y: 4.06, z: -6.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20514,10 +20514,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentState: 0
   _rotationSpeed: 15
-  _moveSpeed: 5
+  _walkSpeed: 5
+  _runSpeed: 8
   _gravitySpeed: 1
   _rb: {fileID: 4392846463522368107}
-  xAxis: 0
+  xAxis: 1
+  _model: {fileID: 4678845792367614708}
   isGrounded: 1
 --- !u!65 &4392846463522368110
 BoxCollider:
