@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private AudioManager _audioManager;
-
+    [SerializeField] private CameraManager _cameraManager;
 
     private void Start()
     {
         EventManager.GoalEvent += OnGoal;
         EventManager.ActivateMechanism += OnActivateMechanism;
+        EventManager.ChangeCamera += OnChangeCamera;
     }
     private void Update()
     {
@@ -50,11 +51,16 @@ public class GameManager : MonoBehaviour
 
         EventManager.GoalEvent -= OnGoal;
         EventManager.ActivateMechanism -= OnActivateMechanism;
+        EventManager.ChangeCamera -= OnChangeCamera;
     }
     //---------------------------------------------------------------------------------------//
     public static GameManager GetInstance
     {
         get { return _instance; }
+    }
+    public CameraManager GetCameraManager
+    {
+        get { return _cameraManager; }
     }
     public PlayerMovement GetPlayerController
     {
@@ -96,5 +102,10 @@ public class GameManager : MonoBehaviour
     public void OnActivateMechanism()
     {
         _audioManager.ActivateMechanismAudio();
+    }
+
+    public void OnChangeCamera()
+    {
+        //_cameraManager.ActivateCam(); ver la clase del 02/06/22
     }
 }
