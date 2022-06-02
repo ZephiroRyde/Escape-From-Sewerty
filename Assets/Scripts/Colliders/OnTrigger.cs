@@ -45,6 +45,10 @@ public class OnTrigger : MonoBehaviour
     }
 
 
-
+    public void CameraActivate(int cameraNum)
+    {
+        GameManager.GetInstance.GetCameraManager._actualCam = cameraNum;
+        EventManager.OnChangeCamera();
+    }
     
 }

@@ -106,6 +106,6 @@ public class GameManager : MonoBehaviour
 
     public void OnChangeCamera()
     {
-        //_cameraManager.ActivateCam(); ver la clase del 02/06/22
+        _cameraManager.ActivateCam();
     }
 }

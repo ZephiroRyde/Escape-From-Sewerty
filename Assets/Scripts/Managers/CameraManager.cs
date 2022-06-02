@@ -6,15 +6,15 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _cameras;
     [SerializeField] private int _actualCamera = 0;
-
+    public int _actualCam;
     private void Start()
     {
         _cameras[0].SetActive(true);
     }
-    public void ActivateCam(int camNum)
+    public void ActivateCam()
     {
         _cameras[_actualCamera].SetActive(false);
-        _actualCamera = camNum;
+        _actualCamera = _actualCam;
         _cameras[_actualCamera].SetActive(true);
     }
 }
