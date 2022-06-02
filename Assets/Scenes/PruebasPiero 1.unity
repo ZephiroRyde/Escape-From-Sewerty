@@ -24660,6 +24660,10 @@ MonoBehaviour:
   _runSpeed: 8
   _model: {fileID: 1463502786}
   _rotationSpeed: 15
+  normalColliderHeight: 1.6
+  crounchColliderHeight: 1
+  normalCharacterCenter: {x: 0, y: 0.004, z: 0}
+  crounchCharacterCenter: {x: 0, y: 0, z: 0}
   _jumpHeight: 1.4
   _gravityValue: -15
   _fallGravityValue: -20

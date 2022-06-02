@@ -28,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _model;
     [SerializeField] private float _rotationSpeed = 15;
 
+    [Header("Character Controller")]
+    [SerializeField] private float normalColliderHeight = 1.6f;
+    [SerializeField] private float crounchColliderHeight = 1;
+    [SerializeField] private Vector3 normalCharacterCenter = new Vector3(0,0.004f,0);
+    [SerializeField] private Vector3 crounchCharacterCenter = new Vector3(0, -0.2f, 0);
+
+    private CharacterController _charController;
 
     [Header("Jump")]
     [SerializeField] private float _jumpHeight = 3;
@@ -36,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _gravityValue = -9.81f;
     [SerializeField] private float _fallGravityValue = -10f;
 
-    private CharacterController _charController;
+    
     private Vector3 _movement;
     private bool _isGrounded = false;
 
@@ -85,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Movement();
             HandleJump();
+            HandleCrouch();
         }
         
         if(_horizontal == 0 && _vertical == 0 && currentState != PlayerState.Interacting && currentState != PlayerState.climbing)
@@ -128,7 +136,18 @@ public class PlayerMovement : MonoBehaviour
     
     public void HandleCrouch()
     {
-
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            currentState = PlayerState.Crouching;
+            _charController.center = crounchCharacterCenter;
+            _charController.height = crounchColliderHeight;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            currentState = PlayerState.Idle;
+            _charController.center = normalCharacterCenter;
+            _charController.height = normalColliderHeight;
+        }
     }
     private void HandleJump()
     {
