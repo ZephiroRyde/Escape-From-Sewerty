@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerData pData;
     public enum PlayerState
     {
         Idle,
@@ -257,6 +258,11 @@ public class PlayerMovement : MonoBehaviour
             currentState = PlayerState.Interacting;
             _movement = Vector3.zero;
         }
+        
+    }
+
+    public void SavePlayerData()
+    {
         
     }
 }

@@ -84,7 +84,7 @@ public class PlatformGeneral : MonoBehaviour
 
     private void LeverMoveMode()
     {
-        _moving = true;
+        
         switch(_actualMoveMode)
         {
             case PlatformMoveMode.normal:
@@ -101,7 +101,7 @@ public class PlatformGeneral : MonoBehaviour
 
     public void MoveNormal()
     {
-        
+        _moving = true;
         transform.DOLocalMove(_positions[_actualPosition], _moveTime).OnComplete(() => 
         {
             _moving = false;
@@ -119,9 +119,11 @@ public class PlatformGeneral : MonoBehaviour
         _actualPosition++;
         if (_actualPosition >= _positions.Length)
         {
+            _actualPosition = _positions.Length -1;
             return;
         }
-        transform.DOLocalMove(_positions[_actualPosition++], _moveTime).OnComplete(() =>
+        _moving = true;
+        transform.DOLocalMove(_positions[_actualPosition], _moveTime).OnComplete(() =>
         {
             _moving = false;
 
@@ -130,11 +132,13 @@ public class PlatformGeneral : MonoBehaviour
     private void MovePrevious()
     {
         _actualPosition--;
-        if(_actualPosition >= 0)
+        if(_actualPosition < 0)
         {
+            _actualPosition = 0;
             return;
         }
-        transform.DOLocalMove(_positions[_actualPosition--], _moveTime).OnComplete(() =>
+        _moving = true;
+        transform.DOLocalMove(_positions[_actualPosition], _moveTime).OnComplete(() =>
         {
             _moving = false;
 

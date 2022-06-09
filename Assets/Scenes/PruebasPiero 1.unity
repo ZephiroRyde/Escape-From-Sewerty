@@ -4863,7 +4863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &247897634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5114,7 +5114,6 @@ GameObject:
   - component: {fileID: 259770534}
   - component: {fileID: 259770538}
   - component: {fileID: 259770537}
-  - component: {fileID: 259770536}
   - component: {fileID: 259770535}
   m_Layer: 0
   m_Name: RoteLever (2)
@@ -5131,7 +5130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259770533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.29, y: 17.33, z: 32.24188}
+  m_LocalPosition: {x: -0.37, y: 17.5, z: -7.85}
   m_LocalScale: {x: 0.8453833, y: 0.27417463, z: 0.887094}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5152,21 +5151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c510b5e6704fee74b84b7f6e0d54d4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actualMode: 1
+  _actualMode: 0
   _isActive: 0
---- !u!135 &259770536
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259770533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.5
-  m_Center: {x: -0.0000009536743, y: -0.0000009536743, z: 0}
+  _light: {fileID: 0}
+  _collider: {fileID: 0}
+  _colliderCenter: {x: 0, y: 0, z: 0}
+  _colliderRadius: 2.5
+  _colliderIsTrigger: 1
+  _lightDefaultIntensity: 15
+  _lightRange: 2.75
 --- !u!23 &259770537
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7965,12 +7958,13 @@ MonoBehaviour:
   _xAxis: 0
   _rotateLeft: 0
   _actualmode: 0
-  _actualMoveMode: 0
+  _actualMoveMode: 1
   _positions:
   - {x: 0, y: 0, z: 0}
   - {x: -42, y: 25, z: 31.5}
   _actualPosition: 0
   _moveTime: 1
+  _moving: 0
 --- !u!1 &403678639
 GameObject:
   m_ObjectHideFlags: 0
@@ -27170,6 +27164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e9bd14a7201984eb21c68408ba38cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pData: {fileID: 11400000, guid: 8fae2e9592268d747b8d791acc825cac, type: 2}
   currentState: 0
   _speed: 5
   _runSpeed: 8
@@ -32973,8 +32968,9 @@ MonoBehaviour:
   m_text: "Texto ejemplo\nen este lugar aparece la informacion que queremos \nmostrar
     al jugador."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c5c0c41e2cd7f044b2b56d7df7e9a88, type: 2}
+  m_sharedMaterial: {fileID: 7229748945664775668, guid: 1c5c0c41e2cd7f044b2b56d7df7e9a88,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -32998,8 +32994,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
