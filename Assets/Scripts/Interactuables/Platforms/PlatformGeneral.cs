@@ -36,19 +36,21 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private Vector3[] _positions;
     [SerializeField] private int _actualPosition = 0;
     [SerializeField] private float _moveTime = 2;
-
+    [SerializeField] private bool _moving = false;
     private void Start()
     {
-        _positions[0] = transform.position;
+        _positions[0] = transform.localPosition;
     }
 
     private void Update()
     {
         if (_pActivator._isActive)
         {
+            _pActivator._isActive = false;
             switch (_actualmode)
             {
                 case PlatformMode.leverMove:
+                    if (_moving) return;
                     LeverMoveMode();
                     break;
                 case PlatformMode.leverRot:
@@ -81,7 +83,8 @@ public class PlatformGeneral : MonoBehaviour
     }
 
     private void LeverMoveMode()
-    {        
+    {
+        _moving = true;
         switch(_actualMoveMode)
         {
             case PlatformMoveMode.normal:
@@ -94,38 +97,47 @@ public class PlatformGeneral : MonoBehaviour
                 MovePrevious();
                 break;
         }
-        if (_pActivator._isActive)
-        {
-            _pActivator._isActive = false;
-        }
     }
 
     public void MoveNormal()
     {
-        if (_actualPosition++ >= _positions.LongLength) //no funciona, como consigo el largo de un arreglo??
+        
+        transform.DOLocalMove(_positions[_actualPosition], _moveTime).OnComplete(() => 
         {
-            transform.DOLocalMove(_positions[_actualPosition++], _moveTime).OnComplete(() => { _actualPosition = _actualPosition++; });
-        }
-        else
-        {
-            transform.DOLocalMove(_positions[0], _moveTime).OnComplete(() => { _actualPosition = 0; });
-        }
+            _moving = false;
+            _actualPosition++;
+            if(_actualPosition >= _positions.Length)
+            {
+                _actualPosition = 0;
+            }
+        });
+
+        
     }
     private void MoveNext()
     {
-        if (_positions[_actualPosition++] != null)
+        _actualPosition++;
+        if (_actualPosition >= _positions.Length)
         {
-            transform.DOLocalMove(_positions[_actualPosition++], _moveTime).OnComplete(() => { _actualPosition = _actualPosition++; });
+            return;
         }
-        
+        transform.DOLocalMove(_positions[_actualPosition++], _moveTime).OnComplete(() =>
+        {
+            _moving = false;
+
+        });
     }
     private void MovePrevious()
     {
-        if(_positions[_actualPosition--] != null)
+        _actualPosition--;
+        if(_actualPosition >= 0)
         {
-            transform.DOLocalMove(_positions[_actualPosition--], _moveTime).OnComplete(() => { _actualPosition = _actualPosition--; });
+            return;
         }
-        
-    }
+        transform.DOLocalMove(_positions[_actualPosition--], _moveTime).OnComplete(() =>
+        {
+            _moving = false;
 
+        });
+    }
 }

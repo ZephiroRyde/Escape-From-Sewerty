@@ -51,14 +51,14 @@ public class PlatformActivator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(CompareTag("Player"))
+        if(other.CompareTag("Player"))
         {
             _canActivate = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             _canActivate = false;
         }
