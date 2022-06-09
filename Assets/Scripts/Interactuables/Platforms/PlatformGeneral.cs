@@ -11,7 +11,8 @@ public class PlatformGeneral : MonoBehaviour
         leverMove,
         leverRot,
         valveMove,
-        valveRote
+        valveRot,
+        pasiveRot
 
     }
 
@@ -22,49 +23,105 @@ public class PlatformGeneral : MonoBehaviour
         previous
     }
 
-    [Header("General")]
-    [SerializeField] PlatformActivator _pActivator;
-    [SerializeField] private bool _xAxis;
-    [SerializeField] private bool _rotateLeft;
+    public enum PlatformRotAxis
+    {
+        x,
+        y,
+        z
+    }
 
+    public enum PlatformRotDirection
+    {
+        left,
+        right
+    }
+
+
+    [Header("General")]
+    [SerializeField] PlatformActivator[] _pActivator;
+    [SerializeField] private PlatformRotAxis _actualAxis;
+    [SerializeField] private PlatformRotDirection _actualDirection;
+    [SerializeField] private float _moveTime = 2;
 
     [Header("Opciones:")]
     [SerializeField] private PlatformMode _actualmode;
 
-    [Header("LeverMove;")]
+    [Header("Lever Move;")]
     [SerializeField] private PlatformMoveMode _actualMoveMode;
     [SerializeField] private Vector3[] _positions;
     [SerializeField] private int _actualPosition = 0;
-    [SerializeField] private float _moveTime = 2;
     [SerializeField] private bool _moving = false;
+
+    [Header("Lever Rotate")]
+    [SerializeField] private float _normalRot;
+    [SerializeField] private float _finalRot;
+    [SerializeField] private bool _rotating = false;
+    [SerializeField] private bool _rotationComplete = false;
+
     private void Start()
     {
-        _positions[0] = transform.localPosition;
+        InitializeScript();
     }
 
     private void Update()
     {
-        if (_pActivator._isActive)
+        if (Active())
         {
-            _pActivator._isActive = false;
+            Deactivate();
             switch (_actualmode)
             {
                 case PlatformMode.leverMove:
                     if (_moving) return;
+                    EventManager.OnActivateMechanism();
                     LeverMoveMode();
                     break;
                 case PlatformMode.leverRot:
+                    if (_rotating) return;
+                    EventManager.OnActivateMechanism();
                     LeverRotMode();
                     break;
                 case PlatformMode.valveMove:
                     ValveMoveMode();
                     break;
-                case PlatformMode.valveRote:
+                case PlatformMode.valveRot:
                     ValveRotMode();
+                    break;
+                case PlatformMode.pasiveRot:
+                    PasiveRotMode();
                     break;
             }
         }
         
+    }
+
+    
+
+    private void Deactivate()
+    {
+        foreach (PlatformActivator activator in _pActivator)
+        {
+            activator._isActive = false;
+        }
+    }
+
+    private bool Active()
+    {
+        bool _active = false; 
+
+        foreach(PlatformActivator activator in _pActivator)
+        {
+            if(activator._isActive)
+            {
+                _active =  true;
+            }
+        }
+
+        return _active;
+    }
+
+    private void PasiveRotMode()
+    {
+        throw new NotImplementedException();
     }
 
     private void ValveRotMode()
@@ -79,7 +136,38 @@ public class PlatformGeneral : MonoBehaviour
 
     private void LeverRotMode()
     {
-        throw new NotImplementedException();
+        Vector3 rotDir = Vector3.zero;
+        switch (_actualAxis)
+        {
+            case PlatformRotAxis.x:
+                if (_rotationComplete)
+                {
+                    rotDir.x = _normalRot;
+                }
+                else
+                rotDir.x = _finalRot;
+                break;
+            case PlatformRotAxis.y:
+                if (_rotationComplete)
+                {
+                    rotDir.y = _normalRot;
+                }
+                else
+                    rotDir.y = _finalRot;
+                break;
+            case PlatformRotAxis.z:
+                if (_rotationComplete)
+                {
+                    rotDir.z = _normalRot;
+                }
+                else
+                    rotDir.z = _finalRot;
+                break;
+        }
+        _rotating = true;
+        transform.DORotate(rotDir, _moveTime).OnComplete(() => { _rotating = false; _rotationComplete = !_rotationComplete; });
+        
+        
     }
 
     private void LeverMoveMode()
@@ -143,5 +231,21 @@ public class PlatformGeneral : MonoBehaviour
             _moving = false;
 
         });
+    }
+
+    public void InitializeScript()
+    {
+        _positions[0] = transform.localPosition;
+        
+        switch(_actualDirection)
+        {
+            case PlatformRotDirection.left:
+                _finalRot = -_finalRot;
+                break;
+            case PlatformRotDirection.right:
+                _finalRot = MathF.Abs(_finalRot);
+                break;
+
+        }
     }
 }
