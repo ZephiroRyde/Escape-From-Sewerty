@@ -14,24 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Piero
   cheeseAmount: 0
-  currentState: 0
-  _speed: 5
-  _runSpeed: 8
-  _movementSpeed: 5
-  _horizontal: 0
-  _vertical: 0
-  _normalDir: 1
-  _model: {fileID: 0}
-  _rotationSpeed: 15
-  normalColliderHeight: 1.6
-  crounchColliderHeight: 1
-  normalCharacterCenter: {x: 0, y: 0.004, z: 0}
-  crounchCharacterCenter: {x: 0, y: -0.2, z: 0}
-  _charController: {fileID: 0}
-  _jumpHeight: 3
-  _gravityValue: -9.81
-  _fallGravityValue: -10
-  _movement: {x: 0, y: 0, z: 0}
-  _isGrounded: 0
-  _interacting: 0
-  _lastPlaceGround: {x: 0, y: 0, z: 0}
+  pSaveposition: {x: 0, y: 18.056799, z: -2.0415437}
+  defaulyPosition: {x: 0, y: 18.056799, z: -2.0415437}

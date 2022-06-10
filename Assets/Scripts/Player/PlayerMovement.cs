@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private PlayerData pData;
+    public PlayerData pData;
     public enum PlayerState
     {
         Idle,
@@ -55,7 +55,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _lastPlaceGround;
     private void Awake() 
     {
-        _charController = GetComponent<CharacterController>();    
+        pData.cheeseAmount = 0;
+        _charController = GetComponent<CharacterController>();
+        
+    }
+    private void Start()
+    {
+        LoadPlayerPosition();
     }
 
     private void Update() 
@@ -261,8 +267,13 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void SavePlayerData()
+    public void SavePlayerPosition()
     {
-        
+        pData.pSaveposition = transform.position;
+    }
+
+    public void LoadPlayerPosition()
+    {
+        transform.position = pData.pSaveposition;
     }
 }

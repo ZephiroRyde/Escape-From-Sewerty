@@ -8,4 +8,6 @@ public class PlayerData : ScriptableObject
     [Header("General")]
     public string playerName = "Default";
     public int cheeseAmount = 0;
+    public Vector3 pSaveposition;
+    public Vector3 defaulyPosition;
 }
