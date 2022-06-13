@@ -229,6 +229,12 @@ public class PlayerMovement : MonoBehaviour
         _charController.Move(_movement * Time.deltaTime); //movimiento
 
     }
+
+    public void SavePointTeleport()
+    {
+        transform.position = pData.pSaveposition;
+
+    }
     private float GetGravity()
     {
         float value = _gravityValue;

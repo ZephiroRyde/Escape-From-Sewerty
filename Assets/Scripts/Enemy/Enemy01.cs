@@ -98,7 +98,7 @@ public class Enemy01 : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
-            GameManager.GetInstance.ResetScene();
+            GameManager.GetInstance.GetPlayerController.SavePointTeleport();
         }
 
     }
