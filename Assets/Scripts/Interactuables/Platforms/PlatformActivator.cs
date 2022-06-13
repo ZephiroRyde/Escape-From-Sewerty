@@ -37,7 +37,8 @@ public class PlatformActivator : MonoBehaviour
     {
         if(_canActivate)
         {
-            _light.intensity = _lightDefaultIntensity;
+            if(_light)
+                _light.intensity = _lightDefaultIntensity;
             if (Input.GetKey(KeyCode.E))
             {
                 switch (_actualMode)
@@ -56,8 +57,8 @@ public class PlatformActivator : MonoBehaviour
             
         }
         else
-        {
-            _light.intensity = 0;
+        {   if(_light)
+                _light.intensity = 0;
         }
     }
 
@@ -95,9 +96,9 @@ public class PlatformActivator : MonoBehaviour
         _collider.radius = _colliderRadius;
         _collider.isTrigger = _colliderIsTrigger;
 
-        _light = gameObject.AddComponent<Light>() as Light;
-        _light.type = LightType.Point;
-        _light.range = _lightRange;
-        _light.intensity = 0;
+        // _light = gameObject.AddComponent<Light>() as Light;
+        // _light.type = LightType.Point;
+        // _light.range = _lightRange;
+        // _light.intensity = 0;
     }
 }
