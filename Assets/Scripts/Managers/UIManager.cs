@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     {
 
         VictoryPanel.SetActive(true);
-        _victoryText.text = "Felicidades!!, tan solo el 9,6% de los jugadores logran escapar Conseguiste " + _pdata.cheeseAmount + " de 2";
+        _victoryText.text = "Felicidades!!, tan solo el 9,6% de los jugadores logran escapar Conseguiste " + _pdata.cheeseAmount + " de 2 quesos";
         
     }
 }
