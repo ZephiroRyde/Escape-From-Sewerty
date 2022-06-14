@@ -2,12 +2,20 @@ fileFormatVersion: 2
 guid: f6d24a8ddbe80b84f9e071dfb232afaf
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: 9119674217408240534
+    second: Torax|Player_Run
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player Material
+    second: {fileID: 2100000, guid: daf649dc944cc8141ab9875463c2e0a9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
