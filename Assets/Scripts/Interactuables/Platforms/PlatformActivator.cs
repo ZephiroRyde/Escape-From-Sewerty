@@ -96,9 +96,9 @@ public class PlatformActivator : MonoBehaviour
         _collider.radius = _colliderRadius;
         _collider.isTrigger = _colliderIsTrigger;
 
-        // _light = gameObject.AddComponent<Light>() as Light;
-        // _light.type = LightType.Point;
-        // _light.range = _lightRange;
-        // _light.intensity = 0;
+        _light = gameObject.AddComponent<Light>() as Light;
+        _light.type = LightType.Point;
+        _light.range = _lightRange;
+        _light.intensity = 0;
     }
 }

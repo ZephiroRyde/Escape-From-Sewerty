@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         _playerController.pData.pSaveposition =  _playerController.pData.defaulyPosition;
+        _playerController.pData.normalDir = true;
         SceneManager.LoadScene("PruebasPiero 1");
     }
 
