@@ -233,7 +233,7 @@ public class PlayerMovement : MonoBehaviour
     public void SavePointTeleport()
     {
         transform.position = pData.pSaveposition;
-
+        
     }
     private float GetGravity()
     {
@@ -276,10 +276,12 @@ public class PlayerMovement : MonoBehaviour
     public void SavePlayerPosition()
     {
         pData.pSaveposition = transform.position;
+        pData.normalDir = _normalDir;
     }
 
     public void LoadPlayerPosition()
     {
         transform.position = pData.pSaveposition;
+        _normalDir = pData.normalDir;
     }
 }

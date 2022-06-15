@@ -10,4 +10,5 @@ public class PlayerData : ScriptableObject
     public int cheeseAmount = 0;
     public Vector3 pSaveposition;
     public Vector3 defaulyPosition;
+    public bool normalDir;
 }
