@@ -9,15 +9,15 @@ public class Minigame : MonoBehaviour
     [SerializeField] private float _speed = 1;
     [SerializeField] private bool _win = false;
     [SerializeField] private GameObject _miniJuego;
-    private void Start()
+    void OnEnable()
     {
         if (_speed < 5)
         {
             _speed += 1;
         }
+        GameManager.GetInstance.GetPlayerController.Interact();
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Win")
         {
@@ -42,9 +42,10 @@ public class Minigame : MonoBehaviour
             }
             else if (_win == false)
             {
-                //Mata al player
+                GameManager.GetInstance.GetPlayerController.SavePointTeleport();
                 Debug.Log("perdiste");
             }
+            GameManager.GetInstance.GetPlayerController.Interact();
             _miniJuego.SetActive(false);
         }
 
