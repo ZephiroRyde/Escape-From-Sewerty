@@ -6,6 +6,12 @@ using DG.Tweening;
 
 public class PlatformGeneral : MonoBehaviour
 {
+    public enum cameraMode
+    {
+        cooldown,
+        trigger
+
+    }
     public enum PlatformMode
     {        
         leverMove,
@@ -43,6 +49,11 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private PlatformRotDirection _actualDirection;
     [SerializeField] private float _moveTime = 2;
 
+    [Header("Camera")]
+    [SerializeField] private bool _activeCamera;
+    [SerializeField] private GameObject _targetCameraGO;
+    [SerializeField] private cameraMode _cameraActualMode;
+
     [Header("Opciones:")]
     [SerializeField] private PlatformMode _actualmode;
 
@@ -67,6 +78,8 @@ public class PlatformGeneral : MonoBehaviour
     {
         if (Active())
         {
+            ActivateCam();
+            
             Deactivate();
             switch (_actualmode)
             {
@@ -94,7 +107,10 @@ public class PlatformGeneral : MonoBehaviour
         
     }
 
-    
+    private void ActivateCam()
+    {
+        _activeCamera = true;
+    }
 
     private void Deactivate()
     {
