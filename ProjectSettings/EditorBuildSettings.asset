@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel1SoloObj.unity
     guid: 3d8b3b3badc54be43b8e8cdac3444f56
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Main/MainMenu.unity
     guid: 23247d77daa55de4da23bdbde0b9d312
   - enabled: 1
-    path: Assets/Scenes/PruebasPiero 1.unity
+    path: Assets/Scenes/Main/PruebasPiero 1.unity
     guid: 8842229622ee7af449383aeca945d6a9
   m_configObjects: {}
