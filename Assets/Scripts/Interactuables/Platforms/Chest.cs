@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Chest : MonoBehaviour
 {
@@ -24,7 +25,9 @@ public class Chest : MonoBehaviour
     [SerializeField] private float _lightDefaultIntensity = 15;
     [SerializeField] private float _lightRange = 2.75f;
     [SerializeField] private Light _light;
+
     [SerializeField] private GameObject _miniJuego;
+    [SerializeField] private Animator _cheeseAnim;
 
     private void Awake()
     {
@@ -78,6 +81,7 @@ public class Chest : MonoBehaviour
             _miniJuego.SetActive(true);
             //GameManager.GetInstance.GetPlayerController.pData.cheeseAmount++;
             //cambiar a modelo abierto
+            _cheeseAnim.SetBool("ActiveCheese",true);
         }
         
     }
