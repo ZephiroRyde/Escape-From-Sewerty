@@ -50,8 +50,10 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private float _moveTime = 2;
 
     [Header("Camera")]
+    private bool _cameraOff = true;
     [SerializeField] private bool _activeCamera = false;
     [SerializeField] private float _cameraCD = 3;
+    private float actualCD;
     [SerializeField] private GameObject _targetCameraGO;
     [SerializeField] private cameraMode _cameraActualMode = cameraMode.cooldown;
 
@@ -73,24 +75,42 @@ public class PlatformGeneral : MonoBehaviour
     private void Start()
     {
         InitializeScript();
+        actualCD = _cameraCD;
     }
 
     private void Update()
     {
+        if(_activeCamera && !_cameraOff)
+        {
+            if(actualCD >= 0)
+            {
+                actualCD -= Time.deltaTime;
+            }
+            else 
+            {
+                DeactivateCam();
+                _cameraOff = true;
+            }
+        }
+
         if (Active())
         {
-            ActivateCam();
+            
             
             Deactivate();
             switch (_actualmode)
             {
                 case PlatformMode.leverMove:
+                    Debug.Log("LeverMove");
                     if (_moving) return;
+                    ActivateCam();
                     EventManager.OnActivateMechanism();
                     LeverMoveMode();
                     break;
                 case PlatformMode.leverRot:
+                    Debug.Log("LeverRot");
                     if (_rotating) return;
+                    ActivateCam();
                     EventManager.OnActivateMechanism();
                     LeverRotMode();
                     break;
@@ -108,9 +128,25 @@ public class PlatformGeneral : MonoBehaviour
         
     }
 
+    private void DeactivateCam()
+    {
+        _targetCameraGO.SetActive(false);
+    }
+
     private void ActivateCam()
     {
-        _activeCamera = true;
+        if (!_activeCamera) return;
+
+        _cameraOff = false;
+        switch(_cameraActualMode)
+        {
+
+            case cameraMode.cooldown:
+                _targetCameraGO.SetActive(true);
+                actualCD = _cameraCD;                
+                break;
+
+        }
     }
 
     private void Deactivate()
@@ -182,7 +218,7 @@ public class PlatformGeneral : MonoBehaviour
                 break;
         }
         _rotating = true;
-        transform.DORotate(rotDir, _moveTime).OnComplete(() => { _rotating = false; _rotationComplete = !_rotationComplete; });
+        transform.DORotate(rotDir, _moveTime).OnComplete(() => { _rotating = false; _rotationComplete = !_rotationComplete; DeactivateCam(); });
         
         
     }
