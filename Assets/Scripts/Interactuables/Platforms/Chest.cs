@@ -24,6 +24,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private float _lightDefaultIntensity = 15;
     [SerializeField] private float _lightRange = 2.75f;
     [SerializeField] private Light _light;
+    [SerializeField] private GameObject _miniJuego;
 
     private void Awake()
     {
@@ -70,10 +71,12 @@ public class Chest : MonoBehaviour
         {
             if(_active)
             {
+                
                 return;
             }
             _active = true;
-            GameManager.GetInstance.GetPlayerController.pData.cheeseAmount++;
+            _miniJuego.SetActive(true);
+            //GameManager.GetInstance.GetPlayerController.pData.cheeseAmount++;
             //cambiar a modelo abierto
         }
         
