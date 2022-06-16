@@ -911,7 +911,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:
@@ -6485,7 +6487,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:
@@ -8182,8 +8186,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13.66, y: 30.84, z: 4.22}
+  m_LocalRotation: {x: 0.06251571, y: -0.7655452, z: 0.07526128, w: 0.6358994}
+  m_LocalPosition: {x: 10.21791, y: 20.593689, z: -7.9331894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9862,7 +9866,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 1
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 0
   _actualMoveMode: 1
   _positions:
@@ -13873,7 +13879,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:
@@ -17733,7 +17741,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:
@@ -22540,7 +22550,9 @@ MonoBehaviour:
   _actualDirection: 1
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:
@@ -38426,7 +38438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1607292773
 Transform:
   m_ObjectHideFlags: 0
@@ -47850,7 +47862,9 @@ MonoBehaviour:
   _actualDirection: 0
   _moveTime: 3
   _activeCamera: 0
-  _targetCameraGO: {fileID: 0}
+  _cameraCD: 0
+  _targetCameraGO: {fileID: 1607292772}
+  _cameraActualMode: 0
   _actualmode: 1
   _actualMoveMode: 0
   _positions:

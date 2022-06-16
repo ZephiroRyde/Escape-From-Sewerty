@@ -50,9 +50,10 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private float _moveTime = 2;
 
     [Header("Camera")]
-    [SerializeField] private bool _activeCamera;
+    [SerializeField] private bool _activeCamera = false;
+    [SerializeField] private float _cameraCD = 3;
     [SerializeField] private GameObject _targetCameraGO;
-    [SerializeField] private cameraMode _cameraActualMode;
+    [SerializeField] private cameraMode _cameraActualMode = cameraMode.cooldown;
 
     [Header("Opciones:")]
     [SerializeField] private PlatformMode _actualmode;
