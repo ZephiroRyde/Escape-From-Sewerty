@@ -2,8 +2,31 @@ fileFormatVersion: 2
 guid: fc1ff05263bf12a48873556c9b30142c
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: 8167554339528910215
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Attack
+  - first:
+      74: -3114841365813743674
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Gla
+  - first:
+      74: -5262995540156900728
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Glance_
+  - first:
+      74: -2344743494626118197
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Idle
+  - first:
+      74: 2798058331180238902
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Run
+  - first:
+      74: -6986874650441909780
+    second: Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Armature_Rat|Rat_Walk
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Giant Rat
+    second: {fileID: 2100000, guid: a39997d10c56e014ba250ed73c25040a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
