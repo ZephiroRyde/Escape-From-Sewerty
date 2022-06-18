@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Animations;
+using DG.Tweening;
 public class Enemy01 : MonoBehaviour
 {
     public enum EnemyState
@@ -24,6 +23,8 @@ public class Enemy01 : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private bool xAxis = true;
     [SerializeField] private Transform _model;
+    [SerializeField] private Animator _selfAnimator;
+    [SerializeField] private bool _der;
 
     public bool isGrounded = true;
     // Update is called once per frame
@@ -86,6 +87,32 @@ public class Enemy01 : MonoBehaviour
         {
             _walkSpeed = -1 * _walkSpeed;
             _runSpeed = -1 * _runSpeed;
+
+            if(xAxis)
+            {
+
+                if (_der)
+                {
+                    _model.DORotate(new Vector3(0, 180, 0), 0.5f).OnComplete(() => { _der = !_der; });
+                }
+                else
+                {
+                    _model.DORotate(new Vector3(0, 0, 0), 0.5f).OnComplete(() => { _der = !_der; });
+                }
+            }
+            else 
+            {
+                if (_der)
+                {
+                    _model.DORotate(new Vector3(0, -90, 0), 0.5f).OnComplete(() => { _der = !_der; });
+                }
+                else
+                {
+                    _model.DORotate(new Vector3(0, 90, 0), 0.5f).OnComplete(() => { _der = !_der; });
+                }
+                
+            }
+            
         }
 
         if (other.CompareTag("Ground"))

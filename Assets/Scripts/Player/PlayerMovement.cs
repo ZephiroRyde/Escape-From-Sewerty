@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Animations;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerData pData;
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _gravityValue = -9.81f;
     [SerializeField] private float _fallGravityValue = -10f;
 
+    [SerializeField] private Animator _pAnimator;
     
     private Vector3 _movement;
     private bool _isGrounded = false;
@@ -67,9 +68,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update() 
     {
 
-        /*switch(currentState)  ------- pensar en como adaptarlo -------
+        switch(currentState)  
         {
             case PlayerState.Walking:
+                _pAnimator.SetBool("Walk", true);
+                _pAnimator.SetBool("Idle", false);
                 break;
             case PlayerState.Runing:
                 break;
@@ -80,10 +83,12 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Interacting:
                 break;
             case PlayerState.Idle:
+                _pAnimator.SetBool("Walk", false);
+                _pAnimator.SetBool("Idle", true);
                 break;
             case PlayerState.Crouching:
                 break;
-        }*/
+        }
 
         _horizontal = Input.GetAxis("Horizontal");
         _vertical   = Input.GetAxis("Vertical");
