@@ -26,7 +26,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Giant Rat
-    second: {fileID: 2100000, guid: a39997d10c56e014ba250ed73c25040a, type: 2}
+    second: {fileID: 2100000, guid: e84b0b3f437b8d74f8f8ef86ed996320, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -232,7 +232,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 1.6
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -285,7 +285,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.016
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
