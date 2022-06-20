@@ -62,8 +62,8 @@ ModelImporter:
       name: metarig|Player_Walk
       takeName: metarig|Player_Walk
       internalID: 0
-      firstFrame: 0
-      lastFrame: 79
+      firstFrame: 1
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -91,7 +91,7 @@ ModelImporter:
       name: metarig|Player_Idle
       takeName: metarig|Player_Idle
       internalID: 0
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
