@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: 221580107424348481
     second: metarig|Player_Walk (1)
+  - first:
+      74: 4159001282235772283
+    second: metarig|Player_Run
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -56,35 +59,6 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: metarig|Player_Walk (1)
-      takeName: metarig|Player_Walk
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 79
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: metarig|Player_Walk
       takeName: metarig|Player_Walk
       internalID: 0
@@ -114,11 +88,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig|Player_Walk.002
-      takeName: metarig|Player_Walk.002
+      name: metarig|Player_Idle
+      takeName: metarig|Player_Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -126,6 +100,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|Player_Run
+      takeName: metarig|Player_Run
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

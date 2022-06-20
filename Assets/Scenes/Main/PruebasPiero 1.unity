@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 494316537}
-  m_PathPosition: 99.56693
+  m_PathPosition: 7.616747
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 2
@@ -37200,7 +37200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pData: {fileID: 11400000, guid: 8fae2e9592268d747b8d791acc825cac, type: 2}
   currentState: 0
-  _speed: 2
+  _speed: 3.18
   _runSpeed: 8
   _model: {fileID: 1463502786}
   _rotationSpeed: 15
@@ -51729,7 +51729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1821433278}
-  m_PathPosition: 117.3779
+  m_PathPosition: 106.4251
   m_PositionUnits: 1
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 2
