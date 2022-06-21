@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Vector3 _movement;
     private bool _isGrounded = false;
+    private bool _wasGrounded = false;
 
     [Header("Interact")]
     private bool _interacting = false;
@@ -94,11 +95,15 @@ public class PlayerMovement : MonoBehaviour
         _vertical   = Input.GetAxis("Vertical");
 
         _isGrounded = _charController.isGrounded;
-
         if(_isGrounded)
         {
+            if (_wasGrounded == false)
+            {
+                GameManager.GetInstance.OnPlayerLanded();
+            }
             _lastPlaceGround = transform.position;
         }
+        _wasGrounded = _isGrounded;
 
         if(currentState != PlayerState.Interacting)
         {
@@ -168,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump")) 
         {
             _movement.y = Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
+            GameManager.GetInstance.OnPlayerJumped();
         }
 
         if (Input.GetButtonUp("Jump") && _movement.y > 0) 

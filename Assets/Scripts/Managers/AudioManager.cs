@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource _musicAS;
     [SerializeField] private AudioSource _sFXAS;
+    [SerializeField] private AudioSource _playerAS;
 
     [Header("AudioClips")]
 
@@ -16,6 +18,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip   _gameOverAC;
     [SerializeField] private AudioClip _onGoalAC;
     [SerializeField] private AudioClip _mechanismAC;
+    [SerializeField] private AudioClip _playerJumpAC;
+    [SerializeField] private AudioClip _playerLandAC;
+    [SerializeField] private AudioClip _playerDeadAC;
     public void PlayGameOverAudio()
     {
         _musicAS.clip = _gameOverAC;
@@ -34,5 +39,36 @@ public class AudioManager : MonoBehaviour
     public void ActivateMechanismAudio()
     {
         _sFXAS.PlayOneShot(_mechanismAC);
+    }
+
+    public void PlayJumped()
+    {
+        if(_playerJumpAC == null)
+        {
+            return;
+        }
+        _playerAS.clip = _playerJumpAC;
+        _playerAS.Play();
+    }
+
+    public void PlayLanded()
+    {
+        if (_playerLandAC = null)
+        {
+            return;
+        }
+        _playerAS.clip = _playerLandAC;
+        _playerAS.Play();
+    }
+
+    public void PlayDied()
+    {
+        if (_playerDeadAC == null)
+        {
+            return;
+        }
+        _playerAS.clip = _playerDeadAC;
+        _playerAS.Play();
+        //prefiero no tocar esto aun
     }
 }

@@ -110,4 +110,17 @@ public class GameManager : MonoBehaviour
     {
         _cameraManager.ActivateCam();
     }
+    public void OnPlayerJumped()
+    {
+        _audioManager.PlayJumped();
+    }
+    public void OnPlayerLanded()
+    {
+        _audioManager.PlayLanded();
+
+    }
+    public void OnPlayerDied()
+    {
+        _audioManager.PlayDied();
+    }
 }
