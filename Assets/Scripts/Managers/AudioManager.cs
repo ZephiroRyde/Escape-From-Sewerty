@@ -48,6 +48,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         _playerAS.clip = _playerJumpAC;
+        _playerAS.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         _playerAS.Play();
     }
 
