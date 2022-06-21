@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLanded()
     {
-        if (_playerLandAC = null)
+        if (_playerLandAC == null)
         {
             return;
         }
