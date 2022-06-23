@@ -9,7 +9,6 @@ public class CameraManager : MonoBehaviour
     public int _actualCam;
     private void Start()
     {
-        _cameras[0].SetActive(true);
     }
     public void ActivateCam()
     {
