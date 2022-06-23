@@ -183,7 +183,11 @@ public class PlayerMovement : MonoBehaviour
         
         if (!_isGrounded)
         {
-            currentState = PlayerState.Jumping;
+            if(currentState != PlayerState.climbing)
+            {
+
+                currentState = PlayerState.Jumping;
+            }
             return;
         } 
 
