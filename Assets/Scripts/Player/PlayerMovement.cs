@@ -74,18 +74,30 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Walking:
                 _pAnimator.SetBool("Walk", true);
                 _pAnimator.SetBool("Idle", false);
+                _pAnimator.SetBool("Run", false);
+                _pAnimator.SetBool("Jump", false);
                 break;
             case PlayerState.Runing:
+                _pAnimator.SetBool("Walk", false);
+                _pAnimator.SetBool("Idle", false);
+                _pAnimator.SetBool("Run", true);
+                _pAnimator.SetBool("Jump", false);
                 break;
             case PlayerState.climbing:
                 break;
             case PlayerState.Jumping:
+                _pAnimator.SetBool("Jump", true);
+                _pAnimator.SetBool("Walk", false);
+                _pAnimator.SetBool("Idle", false);
+                _pAnimator.SetBool("Run", false);
                 break;
             case PlayerState.Interacting:
                 break;
             case PlayerState.Idle:
+                _pAnimator.SetBool("Jump", false);
                 _pAnimator.SetBool("Walk", false);
                 _pAnimator.SetBool("Idle", true);
+                _pAnimator.SetBool("Run", false);
                 break;
             case PlayerState.Crouching:
                 break;
