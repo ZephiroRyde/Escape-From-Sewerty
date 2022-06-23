@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
             HandleCrouch();
         }
         
-        if(_horizontal == 0 && _vertical == 0 && currentState != PlayerState.Interacting && currentState != PlayerState.climbing)
+        if(_horizontal == 0 && _vertical == 0 && currentState != PlayerState.Interacting && currentState != PlayerState.climbing && currentState != PlayerState.Jumping)
         {
             currentState = PlayerState.Idle;
         }
@@ -180,7 +180,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HandleJump()
     {
-        if (!_isGrounded) return;
+        
+        if (!_isGrounded)
+        {
+            currentState = PlayerState.Jumping;
+            return;
+        } 
 
         if (Input.GetButtonDown("Jump")) 
         {
