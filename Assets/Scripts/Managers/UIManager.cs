@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider _brightSlider;
     [SerializeField] private TMP_Dropdown _resolutionDropDown;
     private float _actualBright = 0.2f;
+    
     private void Start()
     {
         _pdata = GameManager.GetInstance.GetPlayerController.pData;
