@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Piero
   cheeseAmount: 0
-  pSaveposition: {x: 0, y: 18.056797, z: -9}
-  defaulyPosition: {x: 0, y: 18.056799, z: -9}
+  pSaveposition: {x: -1.25, y: 18.056799, z: -9}
+  defaulyPosition: {x: -1.25, y: 18.056799, z: -9}
   normalDir: 1
