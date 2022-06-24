@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private AudioManager _audioManager;
     [SerializeField] private CameraManager _cameraManager;
+    [SerializeField] private Light _generalLight;
 
     private void Start()
     {
@@ -126,5 +127,10 @@ public class GameManager : MonoBehaviour
     public void OnApplicationQuit()
     {
         Application.Quit();
+    }
+
+    public void ConfigureBrightness(float bright)
+    {
+        _generalLight.intensity = bright;
     }
 }
