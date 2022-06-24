@@ -123,4 +123,8 @@ public class GameManager : MonoBehaviour
     {
         _audioManager.PlayDied();
     }
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
+    }
 }
