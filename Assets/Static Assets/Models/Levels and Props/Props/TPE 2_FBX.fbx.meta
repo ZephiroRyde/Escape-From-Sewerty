@@ -24,6 +24,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Sewer
     second: {fileID: 2100000, guid: a9d186ca14d0065429d3070fe405a425, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Terciary Material
+    second: {fileID: 2100000, guid: a39997d10c56e014ba250ed73c25040a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

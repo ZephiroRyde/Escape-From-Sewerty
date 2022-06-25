@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3948193467879049186
+--- !u!1 &3861879139989015557
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1560887200369981038}
-  - component: {fileID: 6979113472189559328}
-  - component: {fileID: 4210513469502123172}
+  - component: {fileID: 1656068144646208905}
+  - component: {fileID: 7172018889532635591}
+  - component: {fileID: 4124263883941635907}
   m_Layer: 0
   m_Name: "Tuber\xEDas medianas 1"
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1560887200369981038
+--- !u!4 &1656068144646208905
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3948193467879049186}
+  m_GameObject: {fileID: 3861879139989015557}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.49999997}
   m_LocalPosition: {x: 19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,21 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6979113472189559328
+--- !u!33 &7172018889532635591
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3948193467879049186}
+  m_GameObject: {fileID: 3861879139989015557}
   m_Mesh: {fileID: 6388201162364948312, guid: b613699d0ce413149b0f4b079ffd27c7, type: 3}
---- !u!23 &4210513469502123172
+--- !u!23 &4124263883941635907
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3948193467879049186}
+  m_GameObject: {fileID: 3861879139989015557}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dd0c22ce1a192a43bb1bdeb973a147a, type: 2}
+  - {fileID: 2100000, guid: a9d186ca14d0065429d3070fe405a425, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
