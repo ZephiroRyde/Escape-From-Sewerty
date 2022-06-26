@@ -1,0 +1,14 @@
+newmtl Sewer_Entrance_Pipelines_Material
+map_Kd rusty metal 2 tex.png
+Kd 1 1 1
+d 1
+
+newmtl Large_Pipeline_Material
+map_Kd rusty metal 3 tex.png
+Kd 1 1 1
+d 1
+
+newmtl Black_Material
+Kd 0 0 0
+d 1
+
