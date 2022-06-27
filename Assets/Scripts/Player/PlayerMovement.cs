@@ -216,18 +216,18 @@ public class PlayerMovement : MonoBehaviour
         {
             if(currentState != PlayerState.climbing)
             {
-                currentState = PlayerState.Runing;
+                currentState = PlayerState.Walking;
             }
             
-            _movementSpeed = _runSpeed;
+            _movementSpeed = _speed;
         }
         else
         {
             if (currentState != PlayerState.climbing)
             {
-                currentState = PlayerState.Walking;
+                currentState = PlayerState.Runing;
             }
-            _movementSpeed = _speed;
+            _movementSpeed = _runSpeed;
         }
 
         if(_normalDir)
