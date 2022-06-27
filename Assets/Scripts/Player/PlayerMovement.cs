@@ -146,6 +146,21 @@ public class PlayerMovement : MonoBehaviour
         {
             currentState = PlayerState.climbing;
             _isGrounded = false;
+            
+            if(_normalDir)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, other.transform.position.z);
+                
+            }
+            else
+            {
+                transform.position = new Vector3(other.transform.position.x, transform.position.y, transform.position.z);
+            }
+            
+        }
+        if (other.CompareTag("Spikes"))
+        {
+            LoadPlayerPosition();
         }
 
 
@@ -230,16 +245,25 @@ public class PlayerMovement : MonoBehaviour
             _movementSpeed = _runSpeed;
         }
 
-        if(_normalDir)
+        if (currentState != PlayerState.climbing)
         {
-            _movement.z = _horizontal * _movementSpeed; //mover
-            _movement.x = 0;
+            if (_normalDir)
+            {
+                _movement.z = _horizontal * _movementSpeed; //mover
+                _movement.x = 0;
+            }
+            else
+            {
+                _movement.x = -_horizontal * _movementSpeed;
+                _movement.z = 0;
+            }
         }
         else
         {
-            _movement.x = -_horizontal * _movementSpeed;
             _movement.z = 0;
+            _movement.x = 0;
         }
+        
 
         Vector3 RoteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z);
 
