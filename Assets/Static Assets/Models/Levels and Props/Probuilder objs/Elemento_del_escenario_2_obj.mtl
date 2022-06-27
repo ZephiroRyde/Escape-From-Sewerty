@@ -1,0 +1,5 @@
+newmtl Sewer_Wall_Material
+map_Kd sewer wall tex.png
+Kd 1 1 1
+d 1
+
