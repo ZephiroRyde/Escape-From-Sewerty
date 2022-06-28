@@ -24,7 +24,8 @@ public class ValveRotation : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _light.SetActive(true);
+            if (_light)
+                _light.SetActive(true);
             _detectPlayer = true;
 
 
@@ -36,7 +37,8 @@ public class ValveRotation : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _detectPlayer = false;
-            _light.SetActive(false);
+            if (_light)
+                _light.SetActive(false);
         }
     }
 
@@ -70,7 +72,8 @@ public class ValveRotation : MonoBehaviour
 
         if (_detectPlayer)
         {
-            _light.SetActive(true);
+            if (_light)
+                _light.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -78,8 +81,8 @@ public class ValveRotation : MonoBehaviour
             }
         }
         else
-        {
-            _light.SetActive(false);
+        {   if (_light)
+                _light.SetActive(false);
         }
     }
 
