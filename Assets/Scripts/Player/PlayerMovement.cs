@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded = false;
     private bool _wasGrounded = false;
 
+    [Header("Climb")]
+    [SerializeField] private bool _canClimb;
+    [SerializeField] private Transform _laderTransform;
+
     [Header("Interact")]
     private bool _interacting = false;
 
@@ -103,6 +107,16 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
+        if (_canClimb && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && currentState != PlayerState.climbing)
+        {
+            HandleClimb();
+        }
+        else if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W) && currentState == PlayerState.climbing)
+        {
+
+            currentState = PlayerState.Idle;
+        }
+
         _horizontal = Input.GetAxis("Horizontal");
         _vertical   = Input.GetAxis("Vertical");
 
@@ -144,19 +158,8 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = true;
         if (other.CompareTag("Wood"))
         {
-            currentState = PlayerState.climbing;
-            _isGrounded = false;
-            
-            if(_normalDir)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, other.transform.position.z);
-                
-            }
-            else
-            {
-                transform.position = new Vector3(other.transform.position.x, transform.position.y, transform.position.z);
-            }
-            
+            _canClimb = true;
+            _laderTransform = other.transform;
         }
         if (other.CompareTag("Spikes"))
         {
@@ -171,13 +174,28 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Wood"))
         {
             currentState = PlayerState.Idle;
+            _canClimb = false;
         }
         _isGrounded = false;
     }
 
     //----------------------------------------------------------------------------------------//
 
-    
+    public void HandleClimb()
+    {
+        if (_normalDir)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, _laderTransform.position.z);
+
+        }
+        else
+        {
+            transform.position = new Vector3(_laderTransform.position.x, transform.position.y, transform.position.z);
+        }
+        currentState = PlayerState.climbing;
+        _isGrounded = false;
+        
+    }
     public void HandleCrouch()
     {
         if(Input.GetKeyDown(KeyCode.LeftControl))
