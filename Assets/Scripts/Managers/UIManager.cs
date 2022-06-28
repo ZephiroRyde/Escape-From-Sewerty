@@ -63,10 +63,10 @@ public class UIManager : MonoBehaviour
                 Screen.SetResolution(1920,1080,true);
                 break;
             case 1:
-                Screen.SetResolution(800, 600, true);
+                Screen.SetResolution(1280, 720, true);
                 break;
             case 2:
-                Screen.SetResolution(1080, 720, true);
+                Screen.SetResolution(10240, 576, true);
                 break;
         }
     }

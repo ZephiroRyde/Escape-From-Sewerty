@@ -71,8 +71,15 @@ public class PlatformActivator : MonoBehaviour
 
     private void LeverActivator()
     {
+        _isActive = !_isActive;
         _activatorMesh.materials[0] = (_isActive) ? _onMaterial : _offMaterial;
-        // _isActive = !_isActive;
+        print(_activatorMesh.materials[0]);
+
+        var mats = _activatorMesh.materials;
+        mats[0]= (_isActive) ? _onMaterial : _offMaterial; 
+
+        _activatorMesh.materials = mats;
+
         // if(_activatorMesh.materials[0] == _offMaterial)
         // {
         //     _activatorMesh.materials[0] = _onMaterial;
