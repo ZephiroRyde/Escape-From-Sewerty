@@ -16,7 +16,7 @@ public class PlatformActivator : MonoBehaviour
     public bool _isActive = false;
     private bool _canActivate = false;
     [SerializeField] private Light _light;
-    
+
 
     [Header("Collider Info:")]
     [SerializeField] private SphereCollider _collider;
@@ -28,9 +28,16 @@ public class PlatformActivator : MonoBehaviour
     [SerializeField] private float _lightDefaultIntensity = 15;
     [SerializeField] private float _lightRange = 2.75f;
 
+    [Header("On/Off Light")]
+    [SerializeField] private MeshRenderer _activatorMesh;
+    [SerializeField] private Material _onMaterial;
+    [SerializeField] private Material _offMaterial;
+
+
     private void Awake()
     {
         InitializeComponents();
+        _activatorMesh.materials[0] = _offMaterial;
     }
 
     private void Update()
@@ -66,6 +73,14 @@ public class PlatformActivator : MonoBehaviour
     {
 
         _isActive = !_isActive;
+        if(_activatorMesh.materials[0] == _offMaterial)
+        {
+            _activatorMesh.materials[0] = _onMaterial;
+        }
+        else
+        {
+            _activatorMesh.materials[0] = _offMaterial;
+        }
     }
 
     private void ValveActivator()
