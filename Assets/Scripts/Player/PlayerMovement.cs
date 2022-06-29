@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _runSpeed = 8;
     private float _movementSpeed = 5;
+    private Vector3 _roteDirection;
 
     private float _horizontal;
     private float _vertical;
@@ -295,10 +296,23 @@ public class PlayerMovement : MonoBehaviour
             _movement.x = 0;
         }
         
+        if(currentState != PlayerState.climbing) //si no esta trepando rota segun a donde se mueva
+        {
+            _roteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z); //direccion segun movimiento
+        }
+        else 
+        {
+            if(_normalDir) // si se mueve en la direccion normal rotamos a z
+            {
+                _roteDirection = new Vector3(-1, 0, 0);
+            }
+            else //sino rotamos a x
+            {
+                _roteDirection = new Vector3(0, 0, -1);
+            }
+        }
 
-        Vector3 RoteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z);
-
-        _model.forward = Vector3.Slerp(_model.forward, RoteDirection , Time.deltaTime * _rotationSpeed); //rotaci�n del modelo
+        _model.forward = Vector3.Slerp(_model.forward, _roteDirection , Time.deltaTime * _rotationSpeed); //rotaci�n del modelo
 
 
     }
