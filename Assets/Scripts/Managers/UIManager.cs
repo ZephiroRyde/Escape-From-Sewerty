@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _pdata = GameManager.GetInstance.GetPlayerController.pData;
+        _brightSlider.value =_actualBright;
     }
     private void FixedUpdate()
     {
