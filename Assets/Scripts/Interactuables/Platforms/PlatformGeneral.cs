@@ -93,11 +93,11 @@ public class PlatformGeneral : MonoBehaviour
             }
         }
 
-        if (Active())
+        if (Active() && !_rotating)
         {
-            
-            
-            Deactivate();
+
+            StartCoroutine(DeactiveCoroutine());
+            //Deactivate();
             switch (_actualmode)
             {
                 case PlatformMode.leverMove:
@@ -148,13 +148,20 @@ public class PlatformGeneral : MonoBehaviour
 
         }
     }
-
+    
     private void Deactivate()
     {
         foreach (PlatformActivator activator in _pActivator)
         {
             activator._isActive = false;
         }
+    }
+
+    IEnumerator DeactiveCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(_moveTime/2);
+        Deactivate();
+        StopCoroutine(DeactiveCoroutine());
     }
 
     private bool Active()

@@ -15,7 +15,6 @@ public class PlatformActivator : MonoBehaviour
     [Header("General")]
     public bool _isActive = false;
     private bool _canActivate = false;
-    [SerializeField] private Light _light;
 
 
     [Header("Collider Info:")]
@@ -24,9 +23,6 @@ public class PlatformActivator : MonoBehaviour
     [SerializeField] private float _colliderRadius = 2.5f;
     [SerializeField] private bool _colliderIsTrigger = true;
 
-    [Header("LightInfo:")]
-    [SerializeField] private float _lightDefaultIntensity = 15;
-    [SerializeField] private float _lightRange = 2.75f;
 
     [Header("On/Off Light")]
     [SerializeField] private MeshRenderer _activatorMesh;
@@ -44,8 +40,6 @@ public class PlatformActivator : MonoBehaviour
     {
         if(_canActivate)
         {
-            if(_light)
-                _light.intensity = _lightDefaultIntensity;
             if (Input.GetKey(KeyCode.E))
             {
                 switch (_actualMode)
@@ -63,15 +57,13 @@ public class PlatformActivator : MonoBehaviour
             
             
         }
-        else
-        {   if(_light)
-                _light.intensity = 0;
-        }
     }
 
     private void LeverActivator()
     {
         _isActive = !_isActive;
+
+        //cambiamos material al activar
         _activatorMesh.materials[0] = (_isActive) ? _onMaterial : _offMaterial;
         print(_activatorMesh.materials[0]);
 
@@ -79,15 +71,6 @@ public class PlatformActivator : MonoBehaviour
         mats[0]= (_isActive) ? _onMaterial : _offMaterial; 
 
         _activatorMesh.materials = mats;
-
-        // if(_activatorMesh.materials[0] == _offMaterial)
-        // {
-        //     _activatorMesh.materials[0] = _onMaterial;
-        // }
-        // else
-        // {
-        //     _activatorMesh.materials[0] = _offMaterial;
-        // }
     }
 
     private void ValveActivator()
@@ -118,9 +101,5 @@ public class PlatformActivator : MonoBehaviour
         _collider.radius = _colliderRadius;
         _collider.isTrigger = _colliderIsTrigger;
 
-        // _light = gameObject.AddComponent<Light>() as Light;
-        // _light.type = LightType.Point;
-        // _light.range = _lightRange;
-        // _light.intensity = 0;
     }
 }
