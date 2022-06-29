@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         _playerController.pData.pSaveposition =  _playerController.pData.defaulyPosition;
         _playerController.pData.normalDir = true;
-        SceneManager.LoadScene("PruebasPiero 1");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OnGameOver()
