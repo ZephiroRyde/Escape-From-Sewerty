@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case PlayerState.climbing:
+                _movementSpeed = _speed;
                 _pAnimator.SetBool("Walk", false);
                 _pAnimator.SetBool("Idle", false);
                 _pAnimator.SetBool("Run", false);
@@ -199,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_normalDir)
         {
+            
             transform.position = new Vector3(transform.position.x, transform.position.y, _laderTransform.position.z);
 
         }
@@ -206,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector3(_laderTransform.position.x, transform.position.y, transform.position.z);
         }
+        
         currentState = PlayerState.climbing;
         _isGrounded = false;
         
