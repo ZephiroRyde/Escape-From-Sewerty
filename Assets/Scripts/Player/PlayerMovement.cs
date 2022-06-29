@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        if (_canClimb && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && currentState != PlayerState.climbing)
+        if (_canClimb && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) )&& currentState != PlayerState.climbing)
         {
             HandleClimb();
         }
@@ -158,8 +158,9 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = true;
         if (other.CompareTag("Wood"))
         {
-            _canClimb = true;
             _laderTransform = other.transform;
+            _canClimb = true;
+            
         }
         if (other.CompareTag("Spikes"))
         {
