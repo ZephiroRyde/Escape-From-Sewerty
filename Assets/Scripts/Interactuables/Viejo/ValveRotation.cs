@@ -46,24 +46,24 @@ public class ValveRotation : MonoBehaviour
     {
         if (GameManager.GetInstance.GetPlayerController.currentState == PlayerMovement.PlayerState.Interacting && _detectPlayer)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 _rotateLeft = true;
                 RotatePlatform();
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D ) || Input.GetKey(KeyCode.RightArrow))
             {
                 _rotateLeft = false;
                 RotatePlatform();
                 
             }
             
-            if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+            if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
             {
                 _platform.DOPause();
                 _isRot = false;
             }
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 _platform.DOPlay();
                 _isRot = true;
