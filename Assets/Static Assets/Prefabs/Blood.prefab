@@ -57,8 +57,14 @@ VisualEffect:
       - m_Value: {x: 0, y: 16.6, z: 0}
         m_Name: FloorCollisionOffset
         m_Overridden: 0
+      - m_Value: {x: 50, y: 1, z: 50}
+        m_Name: FloorCollisionSize
+        m_Overridden: 1
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.23536985, y: 0.008406066, z: 0, w: 1}
+        m_Name: BloodColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -72,7 +78,10 @@ VisualEffect:
     m_NamedObject:
       m_Array: []
     m_Bool:
-      m_Array: []
+      m_Array:
+      - m_Value: 1
+        m_Name: Loop
+        m_Overridden: 1
 --- !u!73398921 &2595205226235637720
 VFXRenderer:
   serializedVersion: 1
