@@ -48,6 +48,7 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private PlatformRotAxis _actualAxis;
     [SerializeField] private PlatformRotDirection _actualDirection;
     [SerializeField] private float _moveTime = 2;
+    [SerializeField] private bool _active = false;
 
     [Header("Camera")]
     private bool _cameraOff = true;
@@ -72,6 +73,7 @@ public class PlatformGeneral : MonoBehaviour
     [SerializeField] private bool _rotating = false;
     [SerializeField] private bool _rotationComplete = false;
 
+    private bool _coroutineOn = false;
     private void Start()
     {
         InitializeScript();
@@ -80,6 +82,10 @@ public class PlatformGeneral : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            _active = Active();
+        }
         if(_activeCamera && !_cameraOff)
         {
             if(actualCD >= 0)
@@ -93,10 +99,14 @@ public class PlatformGeneral : MonoBehaviour
             }
         }
 
-        if (Active() && !_rotating)
+        if (_active && !_rotating && !_moving)
         {
-
-            StartCoroutine(DeactiveCoroutine());
+            _active = false;
+            if(!_coroutineOn)
+            {
+                StartCoroutine(DeactiveCoroutine());
+            }
+            
             //Deactivate();
             switch (_actualmode)
             {
@@ -171,8 +181,10 @@ public class PlatformGeneral : MonoBehaviour
     }
     IEnumerator DeactiveCoroutine()
     {
+        _coroutineOn = true;
         yield return new WaitForSecondsRealtime(_moveTime/2);
         Deactivate();
+        _coroutineOn = false;
         StopCoroutine(DeactiveCoroutine());
     }
 

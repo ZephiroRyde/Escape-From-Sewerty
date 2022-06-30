@@ -40,7 +40,7 @@ public class PlatformActivator : MonoBehaviour
     {
         if(_canActivate)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 switch (_actualMode)
                 {
