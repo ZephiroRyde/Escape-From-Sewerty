@@ -299,7 +299,7 @@ public class PlayerMovement : MonoBehaviour
             _movement.x = 0;
         }
         
-        if(currentState != PlayerState.climbing) //si no esta trepando rota segun a donde se mueva
+        if(currentState != PlayerState.climbing || currentState != PlayerState.Interacting) //si no esta trepando rota segun a donde se mueva
         {
             _roteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z); //direccion segun movimiento
         }
@@ -334,6 +334,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void AnimacionPalanca()
+    {
+        currentState = PlayerState.Interacting;
+        _pAnimator.SetBool("Lever", true);
+    }
     public void SavePointTeleport()
     {
         transform.position = pData.pSaveposition;
