@@ -63,6 +63,8 @@ public class PlatformActivator : MonoBehaviour
     {
         _isActive = !_isActive;
 
+        GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
+
         //cambiamos material al activar
         _activatorMesh.materials[0] = (_isActive) ? _onMaterial : _offMaterial;
         print(_activatorMesh.materials[0]);
