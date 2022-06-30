@@ -15,19 +15,27 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject VictoryPanel;
     [SerializeField] private TextMeshProUGUI _victoryText;
+
+    [Header("Brightness Settings")]
     [SerializeField] private Slider _brightSlider;
     [SerializeField] private TMP_Dropdown _resolutionDropDown;
+    private float _actualBright = 0.2f;
+
+    [Header("Volume Settings")]
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private AudioMixerGroup _musicMixer;
-    [SerializeField] private Slider _sfxSlider;
-    [SerializeField] private AudioMixerGroup _sfxMixer;
+    [SerializeField] private Slider _sFXSlider;
+    [SerializeField] private AudioMixerGroup _sFXMixer;
+    [Space]
     [SerializeField] private float _volumeMultiplier;
-    private float _actualBright = 0.2f;
+    [SerializeField] private float _defaultVolume = 0.5f;
     
     private void Start()
     {
         _pdata = GameManager.GetInstance.GetPlayerController.pData;
         _brightSlider.value =_actualBright;
+        _musicSlider.value = _defaultVolume;
+        _sFXSlider.value = _defaultVolume;
     }
     private void FixedUpdate()
     {
@@ -77,16 +85,15 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
-    public void SetMusicVolume() // poner el audio de la música 
+    public void SetMusicVolume(float musicVolume) // poner el audio de la mï¿½sica 
     {
-        float musicVolume = 0.5f;
         AudioListener.volume = musicVolume;
         _musicMixer.audioMixer.SetFloat("MusicVolumeExposed", Mathf.Log10(musicVolume) * _volumeMultiplier);
     }
-    public void SetSFXVolume() // poner el audio de los sfx 
+
+    public void SetSFXVolume(float sfxVolume) // poner el audio de los sfx 
     {
-        float sfxVolume = 0.5f;
         AudioListener.volume = sfxVolume;
-        _sfxMixer.audioMixer.SetFloat("SFXVolumeExposed", Mathf.Log10(sfxVolume) * _volumeMultiplier);
+        _sFXMixer.audioMixer.SetFloat("SFXVolumeExposed", Mathf.Log10(sfxVolume) * _volumeMultiplier);
     }
 }
