@@ -104,19 +104,19 @@ public class PlatformGeneral : MonoBehaviour
                     Debug.Log("LeverMove");
                     if (_moving) return;
                     ActivateCam();
-                    SwapActivatorMaterial();
-                    GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
+                    SwapActivatorMaterial();                    
                     EventManager.OnActivateMechanism();                    
                     LeverMoveMode();
+                    GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
                     break;
                 case PlatformMode.leverRot:
                     Debug.Log("LeverRot");
                     if (_rotating) return;
                     ActivateCam();
                     SwapActivatorMaterial();
-                    GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
                     EventManager.OnActivateMechanism();
                     LeverRotMode();
+                    GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
                     break;
                 case PlatformMode.valveMove:
                     ValveMoveMode();
