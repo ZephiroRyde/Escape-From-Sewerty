@@ -99,7 +99,7 @@ public class PlatformGeneral : MonoBehaviour
             }
         }
 
-        if (_active && !_rotating && !_moving)
+        if (_active)
         {
             _active = false;
             if(!_coroutineOn)
