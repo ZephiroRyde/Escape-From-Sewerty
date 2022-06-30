@@ -61,18 +61,7 @@ public class PlatformActivator : MonoBehaviour
 
     private void LeverActivator()
     {
-        _isActive = !_isActive;
-
-        GameManager.GetInstance.GetPlayerController.AnimacionPalanca();
-
-        //cambiamos material al activar
-        _activatorMesh.materials[0] = (_isActive) ? _onMaterial : _offMaterial;
-        print(_activatorMesh.materials[0]);
-
-        var mats = _activatorMesh.materials;
-        mats[0]= (_isActive) ? _onMaterial : _offMaterial; 
-
-        _activatorMesh.materials = mats;
+        _isActive = !_isActive;        
     }
 
     private void ValveActivator()
@@ -95,6 +84,17 @@ public class PlatformActivator : MonoBehaviour
         }
     }
 
+    public void SwapMaterial()
+    {
+        //cambiamos material al activar
+        _activatorMesh.materials[0] = (_isActive) ? _onMaterial : _offMaterial;
+        //print(_activatorMesh.materials[0]);
+
+        var mats = _activatorMesh.materials;
+        mats[0] = (_isActive) ? _onMaterial : _offMaterial;
+
+        _activatorMesh.materials = mats;
+    }
 
     public void InitializeComponents()
     {

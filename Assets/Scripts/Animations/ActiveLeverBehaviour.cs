@@ -5,10 +5,11 @@ using UnityEngine;
 public class ActiveLeverBehaviour : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+        animator.SetBool("Lever", false);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,8 +20,7 @@ public class ActiveLeverBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("Lever",false);
-        animator.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Idle;
+        animator.GetComponentInParent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Idle;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

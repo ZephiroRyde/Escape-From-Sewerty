@@ -77,43 +77,29 @@ public class PlayerMovement : MonoBehaviour
         switch(currentState)  
         {
             case PlayerState.Walking:
+                DeactivateAnimatorBools();
                 _pAnimator.SetBool("Walk", true);
-                _pAnimator.SetBool("Idle", false);
-                _pAnimator.SetBool("Run", false);
-                _pAnimator.SetBool("Jump", false);
-                _pAnimator.SetBool("Climb", false);
                 break;
             case PlayerState.Runing:
-                _pAnimator.SetBool("Walk", false);
-                _pAnimator.SetBool("Idle", false);
+                DeactivateAnimatorBools();
                 _pAnimator.SetBool("Run", true);
-                _pAnimator.SetBool("Jump", false);
-                _pAnimator.SetBool("Climb", false);
-
                 break;
             case PlayerState.climbing:
                 _movementSpeed = _speed;
-                _pAnimator.SetBool("Walk", false);
-                _pAnimator.SetBool("Idle", false);
-                _pAnimator.SetBool("Run", false);
-                _pAnimator.SetBool("Jump", false);
+                DeactivateAnimatorBools();
                 _pAnimator.SetBool("Climb", true);
                 break;
             case PlayerState.Jumping:
+                DeactivateAnimatorBools();
                 _pAnimator.SetBool("Jump", true);
-                _pAnimator.SetBool("Walk", false);
-                _pAnimator.SetBool("Idle", false);
-                _pAnimator.SetBool("Run", false);
-                _pAnimator.SetBool("Climb", false);
 
                 break;
             case PlayerState.Interacting:
+                DeactivateAnimatorBools();
+                _pAnimator.SetBool("Interact", true);
                 break;
             case PlayerState.Idle:
-                _pAnimator.SetBool("Jump", false);
-                _pAnimator.SetBool("Walk", false);
-                _pAnimator.SetBool("Run", false);
-                _pAnimator.SetBool("Climb", false);
+                DeactivateAnimatorBools();
                 _pAnimator.SetBool("Idle", true);
 
                 break;
@@ -196,6 +182,15 @@ public class PlayerMovement : MonoBehaviour
 
     //----------------------------------------------------------------------------------------//
 
+    public void DeactivateAnimatorBools()
+    {
+        _pAnimator.SetBool("Jump", false);
+        _pAnimator.SetBool("Walk", false);
+        _pAnimator.SetBool("Run", false);
+        _pAnimator.SetBool("Climb", false);
+        _pAnimator.SetBool("Idle", false);
+        _pAnimator.SetBool("Interact", false);
+    }
     public void HandleClimb()
     {
         if (_normalDir)
@@ -299,12 +294,13 @@ public class PlayerMovement : MonoBehaviour
             _movement.x = 0;
         }
         
-        if(currentState != PlayerState.climbing || currentState != PlayerState.Interacting) //si no esta trepando rota segun a donde se mueva
+        if(currentState != PlayerState.climbing && currentState != PlayerState.Interacting) //si no esta trepando rota segun a donde se mueva
         {
             _roteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z); //direccion segun movimiento
         }
         else 
         {
+            Debug.Log("holaaa");
             if(_normalDir) // si se mueve en la direccion normal rotamos a z
             {
                 _roteDirection = new Vector3(-1, 0, 0);
@@ -314,6 +310,7 @@ public class PlayerMovement : MonoBehaviour
                 _roteDirection = new Vector3(0, 0, -1);
             }
         }
+        
 
         _model.forward = Vector3.Slerp(_model.forward, _roteDirection , Time.deltaTime * _rotationSpeed); //rotaci�n del modelo
 
