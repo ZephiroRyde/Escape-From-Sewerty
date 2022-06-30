@@ -22,7 +22,7 @@ public class PlatformActivator : MonoBehaviour
     [SerializeField] private Vector3 _colliderCenter = Vector3.zero;
     [SerializeField] private float _colliderRadius = 2.5f;
     [SerializeField] private bool _colliderIsTrigger = true;
-
+    [SerializeField] private bool _generateCollider = true;
 
     [Header("On/Off Light")]
     [SerializeField] private MeshRenderer _activatorMesh;
@@ -32,7 +32,8 @@ public class PlatformActivator : MonoBehaviour
 
     private void Awake()
     {
-        InitializeComponents();
+        if(_generateCollider)
+            InitializeComponents();
         _activatorMesh.materials[0] = _offMaterial;
     }
 
