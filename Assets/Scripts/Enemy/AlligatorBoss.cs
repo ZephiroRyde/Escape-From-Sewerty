@@ -66,4 +66,11 @@ public class AlligatorBoss : MonoBehaviour
     {
         transform.Translate(new Vector3(0,0, _movementSpeed * Time.deltaTime));
     }
+
+    //------------------------------------------------------------------------------//
+
+    public void StartRunning()
+    {
+        _currentState = AlligatorState.Run;
+    }
 }
