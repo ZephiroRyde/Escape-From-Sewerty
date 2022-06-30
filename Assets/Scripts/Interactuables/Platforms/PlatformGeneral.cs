@@ -86,6 +86,7 @@ public class PlatformGeneral : MonoBehaviour
         {
             _active = Active();
         }
+
         if(_activeCamera && !_cameraOff)
         {
             if(actualCD >= 0)
@@ -182,7 +183,7 @@ public class PlatformGeneral : MonoBehaviour
     IEnumerator DeactiveCoroutine()
     {
         _coroutineOn = true;
-        yield return new WaitForSecondsRealtime(_moveTime/2);
+        yield return new WaitForSecondsRealtime(_moveTime);
         Deactivate();
         _coroutineOn = false;
         StopCoroutine(DeactiveCoroutine());
