@@ -11,6 +11,7 @@ TagManager:
   - EnemyTargetUbi
   - Spikes
   - Win
+  - BossTrigger
   layers:
   - Default
   - TransparentFX

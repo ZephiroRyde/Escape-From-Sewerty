@@ -137,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
             HandleJump();
             HandleCrouch();
         }
+        PlayerRote();
         
         if(_horizontal == 0 && _vertical == 0 && currentState != PlayerState.Interacting && currentState != PlayerState.climbing && currentState != PlayerState.Jumping)
         {
@@ -294,14 +295,18 @@ public class PlayerMovement : MonoBehaviour
             _movement.x = 0;
         }
         
-        if(currentState != PlayerState.climbing && currentState != PlayerState.Interacting) //si no esta trepando rota segun a donde se mueva
+        
+
+    }
+    public void PlayerRote()
+    {
+        if (currentState != PlayerState.climbing && currentState != PlayerState.Interacting) //si no esta trepando rota segun a donde se mueva
         {
             _roteDirection = new Vector3(_charController.velocity.x, 0, _charController.velocity.z); //direccion segun movimiento
         }
-        else 
+        else
         {
-            Debug.Log("holaaa");
-            if(_normalDir) // si se mueve en la direccion normal rotamos a z
+            if (_normalDir) // si se mueve en la direccion normal rotamos a z
             {
                 _roteDirection = new Vector3(-1, 0, 0);
             }
@@ -310,10 +315,9 @@ public class PlayerMovement : MonoBehaviour
                 _roteDirection = new Vector3(0, 0, -1);
             }
         }
-        
 
-        _model.forward = Vector3.Slerp(_model.forward, _roteDirection , Time.deltaTime * _rotationSpeed); //rotaci�n del modelo
 
+        _model.forward = Vector3.Slerp(_model.forward, _roteDirection, Time.deltaTime * _rotationSpeed); //rotaci�n del modelo
 
     }
     private void HandleGravity()

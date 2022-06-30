@@ -64,6 +64,6 @@ public class AlligatorBoss : MonoBehaviour
 
     public void Movement()
     {
-
+        transform.Translate(new Vector3(0,0, _movementSpeed * Time.deltaTime));
     }
 }
