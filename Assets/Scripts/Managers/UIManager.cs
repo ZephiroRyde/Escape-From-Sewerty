@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _victoryText;
     [SerializeField] private Slider _brightSlider;
     [SerializeField] private TMP_Dropdown _resolutionDropDown;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private AudioMixerGroup _musicMixer;
+    [SerializeField] private Slider _sfxSlider;
+    [SerializeField] private AudioMixerGroup _sfxMixer;
+    [SerializeField] private float _volumeMultiplier;
     private float _actualBright = 0.2f;
     
     private void Start()
@@ -70,5 +76,17 @@ public class UIManager : MonoBehaviour
                 Screen.SetResolution(10240, 576, true);
                 break;
         }
+    }
+    public void SetMusicVolume() // poner el audio de la música 
+    {
+        float musicVolume = 0.5f;
+        AudioListener.volume = musicVolume;
+        _musicMixer.audioMixer.SetFloat("MusicVolumeExposed", Mathf.Log10(musicVolume) * _volumeMultiplier);
+    }
+    public void SetSFXVolume() // poner el audio de los sfx 
+    {
+        float sfxVolume = 0.5f;
+        AudioListener.volume = sfxVolume;
+        _sfxMixer.audioMixer.SetFloat("SFXVolumeExposed", Mathf.Log10(sfxVolume) * _volumeMultiplier);
     }
 }
