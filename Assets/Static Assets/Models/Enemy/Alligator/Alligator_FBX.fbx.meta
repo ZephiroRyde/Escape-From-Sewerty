@@ -15,6 +15,15 @@ ModelImporter:
   - first:
       74: 8012648856079609003
     second: Object_4.001|Walk.001 (1)
+  - first:
+      74: -9000188508038137560
+    second: Alligator|_Attack
+  - first:
+      74: -8490321832184969425
+    second: Alligator|_T_Pose
+  - first:
+      74: 9206685198901720259
+    second: Alligator|_Walk
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -50,11 +59,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Object_4.001|Attack
-      takeName: Object_4.001|Attack
+      name: Alligator|_Attack
+      takeName: Alligator|_Attack
       internalID: 0
       firstFrame: 0
-      lastFrame: 13
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -79,8 +88,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Object_4.001|T_Pose
-      takeName: Object_4.001|T_Pose
+      name: Alligator|_T_Pose
+      takeName: Alligator|_T_Pose
       internalID: 0
       firstFrame: 0
       lastFrame: 1
@@ -108,11 +117,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Object_4.001|Walk.001
-      takeName: Object_4.001|Walk.001
+      name: Alligator|_Walk
+      takeName: Alligator|_Walk
       internalID: 0
-      firstFrame: 1
-      lastFrame: 39
+      firstFrame: 0
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
