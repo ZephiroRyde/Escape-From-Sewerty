@@ -11,4 +11,5 @@ public class PlayerData : ScriptableObject
     public Vector3 pSaveposition;
     public Vector3 defaulyPosition;
     public bool normalDir;
+    public int actualCam = 0;
 }
