@@ -16,4 +16,6 @@ public class CameraManager : MonoBehaviour
         _actualCamera = _actualCam;
         _cameras[_actualCamera].SetActive(true);
     }
+
+
 }
