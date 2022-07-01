@@ -16,7 +16,6 @@ public class Enemy01 : MonoBehaviour
 
 
     [SerializeField] private EnemyState _currentState;
-    [SerializeField] private float _rotationSpeed = 15;
     [SerializeField] private float _walkSpeed = 5;
     [SerializeField] private float _runSpeed = 8;
     [SerializeField] private float _gravitySpeed;

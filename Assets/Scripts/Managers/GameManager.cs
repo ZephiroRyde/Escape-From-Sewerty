@@ -89,6 +89,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    public void ResetSave()
+    {
+        
+        SceneManager.LoadScene("MainScene");
+    }
+
     public void OnGameOver()
     {
         _audioManager.PlayGameOverAudio();

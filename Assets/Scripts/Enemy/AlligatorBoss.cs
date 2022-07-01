@@ -49,6 +49,8 @@ public class AlligatorBoss : MonoBehaviour
 
     private void Reset()
     {
+        GameManager.GetInstance.GetPlayerController.LoadPlayerPosition();
+        GameManager.GetInstance.ResetSave();
         _currentState = AlligatorState.Spawn;
     }
 
@@ -72,5 +74,10 @@ public class AlligatorBoss : MonoBehaviour
     public void StartRunning()
     {
         _currentState = AlligatorState.Run;
+    }
+
+    public void StartSpawn()
+    {
+        _currentState = AlligatorState.Spawn;
     }
 }

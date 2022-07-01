@@ -55,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _canClimb;
     [SerializeField] private Transform _laderTransform;
 
-    [Header("Interact")]
-    private bool _interacting = false;
 
     [Header("Limits")]
     private Vector3 _lastPlaceGround;
@@ -337,6 +335,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void AnimacionPalanca()
     {
+        _charController.Move(_movement * 0);
         currentState = PlayerState.Interacting;
         _pAnimator.SetBool("Lever", true);
     }
