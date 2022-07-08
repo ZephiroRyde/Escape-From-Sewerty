@@ -393,4 +393,8 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pData.pSaveposition;
         _normalDir = pData.normalDir;
     }
+    public void SetParentToNull()
+    {
+        transform.SetParent(null);
+    }
 }
